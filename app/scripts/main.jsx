@@ -4,12 +4,20 @@
 // );
 
   var HelloWorld = React.createClass({
-    render: function() {
+    componentWillMount(){
+      this.setState({name: ''});
+    },
+    onChange(event){
+      // this.state.name.set(event.currentTarget().value);
+      // this.state.name = event.currentTarget().value;
+      this.setState({name: event.currentTarget.value});
+    },
+    render() {
       return (
-        <p>
-          Hello, <input type="text" placeholder="Your name here" />!
-          It is {this.props.date.toTimeString()}
-        </p>
+        <div>
+          <input type="text" onChange={this.onChange} placeholder="Your name here" />
+          <p>Hello, {this.state.name}! It is {this.props.date.toTimeString()}</p>
+        </div>
       );
     }
   });

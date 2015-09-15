@@ -47,6 +47,7 @@ gulp.task('styles', () => {
 function lint(files, options) {
   return () => {
     return gulp.src(files)
+      .pipe($.plumber())
       .pipe(reload({stream: true, once: true}))
       .pipe($.eslint(options))
       .pipe($.eslint.format())
@@ -61,6 +62,7 @@ const testLintOptions = {
 
 gulp.task('templates', function () {
   return gulp.src(`${path.SCRIPTS}/**/*.jsx`)
+    .pipe($.plumber())
     .pipe($.react())
     .pipe(gulp.dest(`${path.TMP}/scripts`));
 });
@@ -68,12 +70,13 @@ gulp.task('templates', function () {
 gulp.task('lint', lint(`${path.SRC}/scripts/**/*.js`));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
-gulp.task('html', ['styles'], () => {
+gulp.task('html', ['templates','styles'], () => {
   const assets = $.useref.assets({searchPath: [path.TMP, path.SRC, '.']});
 
   return gulp.src(`${path.SRC}/*.html`)
+    .pipe($.plumber())
     .pipe(assets)
-    .pipe($.if('*.js', $.uglify()))
+    //.pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.minifyCss({compatibility: '*'})))
     .pipe(assets.restore())
     .pipe($.useref())
@@ -171,11 +174,11 @@ gulp.task('serve:test', () => {
 
 // inject bower components
 gulp.task('wiredep', () => {
-  gulp.src(path.STYLES+ '/*.scss')
+  gulp.src(`${path.STYLES}/*.scss`)
     .pipe(wiredep({
       ignorePath: /^(\.\.\/)+/
     }))
-    .pipe(gulp.dest(path.STYLES+ ''));
+    .pipe(gulp.dest(path.STYLES));
 
   gulp.src(path.SRC + '/*.html')
     .pipe(wiredep({
@@ -186,7 +189,7 @@ gulp.task('wiredep', () => {
 });
 
 gulp.task('deploy', () => {
-  return gulp.src(path.DEST + '/**/*')
+  return gulp.src(`${path.DEST}/**/*`)
     .pipe($.ghPages());
 });
 

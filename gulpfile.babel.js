@@ -5,6 +5,11 @@ import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
 
+/** From https://github.com/SophieV/ReactFlux_FormsApp/blob/master/gulpfile.js */
+import watchify from 'watchify';
+import browserify from 'browserify';
+/** **/
+
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
@@ -12,7 +17,7 @@ let path = {
   NOT_MINIFIED: 'build.js',
   MINIFIED_OUT: 'build.min.js',
   OUT: 'build.js',
-
+  /** DIR **/
   SRC: 'src',
   TMP: '.tmp',
   DEST: 'dist'
@@ -25,7 +30,7 @@ path.DEST_BUILD = `${path.DEST}/build`;
 path.DEST_SRC = `${path.DEST}/src`;
 
 gulp.task('styles', () => {
-  return gulp.src(path.STYLES+ '/**/*.scss')
+  return gulp.src(`${path.STYLES}/**/*.scss`)
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
@@ -55,18 +60,18 @@ const testLintOptions = {
 };
 
 gulp.task('templates', function () {
-  return gulp.src(path.SRC + '/scripts/**/*.jsx')
+  return gulp.src(`${path.SCRIPTS}/**/*.jsx`)
     .pipe($.react())
-    .pipe(gulp.dest(path.TMP + '/scripts'));
+    .pipe(gulp.dest(`${path.TMP}/scripts`));
 });
 
-gulp.task('lint', lint(path.SRC + '/scripts/**/*.js'));
+gulp.task('lint', lint(`${path.SRC}/scripts/**/*.js`));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
-gulp.task('html', ['styles', 'babel'], () => {
+gulp.task('html', ['styles'], () => {
   const assets = $.useref.assets({searchPath: [path.TMP, path.SRC, '.']});
 
-  return gulp.src(path.SRC + '/*.html')
+  return gulp.src(`${path.SRC}/*.html`)
     .pipe(assets)
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.minifyCss({compatibility: '*'})))
@@ -77,7 +82,7 @@ gulp.task('html', ['styles', 'babel'], () => {
 });
 
 gulp.task('images', () => {
-  return gulp.src(path.SRC + '/images/**/*')
+  return gulp.src(`${path.SRC}/images/**/*`)
     .pipe($.if($.if.isFile, $.cache($.imagemin({
       progressive: true,
       interlaced: true,
@@ -89,20 +94,20 @@ gulp.task('images', () => {
       console.log(err);
       this.end();
     })))
-    .pipe(gulp.dest(path.DEST + '/images'));
+    .pipe(gulp.dest(`${path.DEST}/images`));
 });
 
 gulp.task('fonts', () => {
   return gulp.src(require('main-bower-files')({
     filter: '**/*.{eot,svg,ttf,woff,woff2}'
-  }).concat(path.SRC + '/fonts/**/*'))
-    .pipe(gulp.dest(path.TMP + '/fonts'))
-    .pipe(gulp.dest(path.DEST + '/fonts'));
+  }).concat(`${path.SRC}/fonts/**/*`))
+    .pipe(gulp.dest(`${path.TMP}/fonts`))
+    .pipe(gulp.dest(`${path.DEST}/fonts`));
 });
 
 gulp.task('extras', () => {
   return gulp.src([
-    path.SRC + '/*.*',
+    `${path.SRC}/*.*`,
     `!${path.SRC}/*.html`
   ], {
     dot: true
@@ -124,16 +129,16 @@ gulp.task('serve', ['templates', 'styles', 'fonts'], () => {
   });
 
   gulp.watch([
-    path.SRC + '/*.html',
-    path.SRC + '/scripts/**/*.js',
-    path.TMP + '/scripts/**/*.js',
-    path.SRC + '/images/**/*',
-    path.TMP + '/fonts/**/*'
+    `${path.SRC}/*.html`,
+    `${path.SRC}/scripts/**/*.js`,
+    `${path.TMP}/scripts/**/*.js`,
+    `${path.SRC}/images/**/*`,
+    `${path.TMP}/fonts/**/*`
   ]).on('change', reload);
 
-  gulp.watch(path.STYLES+ '/**/*.scss', ['styles']);
-  gulp.watch(path.SRC + '/scripts/**/*.jsx', ['templates', reload]);
-  gulp.watch(path.SRC + '/fonts/**/*', ['fonts']);
+  gulp.watch(`${path.STYLES}/**/*.scss`, ['styles']);
+  gulp.watch(`${path.SRC}/scripts/**/*.jsx`, ['templates', reload]);
+  gulp.watch(`${path.SRC}/fonts/**/*`, ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
 

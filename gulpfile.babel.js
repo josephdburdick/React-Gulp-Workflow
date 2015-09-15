@@ -8,8 +8,24 @@ import {stream as wiredep} from 'wiredep';
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
+let path = {
+  NOT_MINIFIED: 'build.js',
+  MINIFIED_OUT: 'build.min.js',
+  OUT: 'build.js',
+
+  SRC: 'src',
+  TMP: '.tmp',
+  DEST: 'dist'
+};
+path.HTML = `${path.SRC}/index.html`;
+path.STYLES = `${path.SRC}/styles`;
+path.SCRIPTS = `${path.SRC}/scripts`;
+path.ENTRY_POINT = `${path.SCRIPTS}/App.jsx`;
+path.DEST_BUILD = `${path.DEST}/build`;
+path.DEST_SRC = `${path.DEST}/src`;
+
 gulp.task('styles', () => {
-  return gulp.src('app/styles/*.scss')
+  return gulp.src(path.STYLES+ '/**/*.scss')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
@@ -19,7 +35,7 @@ gulp.task('styles', () => {
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({browsers: ['last 1 version']}))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('.tmp/styles'))
+    .pipe(gulp.dest(path.TMP + '/styles'))
     .pipe(reload({stream: true}));
 });
 
@@ -39,29 +55,29 @@ const testLintOptions = {
 };
 
 gulp.task('templates', function () {
-  return gulp.src('app/scripts/**/*.jsx')
+  return gulp.src(path.SRC + '/scripts/**/*.jsx')
     .pipe($.react())
-    .pipe(gulp.dest('.tmp/scripts'));
+    .pipe(gulp.dest(path.TMP + '/scripts'));
 });
 
-gulp.task('lint', lint('app/scripts/**/*.js'));
+gulp.task('lint', lint(path.SRC + '/scripts/**/*.js'));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
 gulp.task('html', ['styles', 'babel'], () => {
-  const assets = $.useref.assets({searchPath: ['.tmp', 'app', '.']});
+  const assets = $.useref.assets({searchPath: [path.TMP, path.SRC, '.']});
 
-  return gulp.src('app/*.html')
+  return gulp.src(path.SRC + '/*.html')
     .pipe(assets)
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.minifyCss({compatibility: '*'})))
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest(path.DEST));
 });
 
 gulp.task('images', () => {
-  return gulp.src('app/images/**/*')
+  return gulp.src(path.SRC + '/images/**/*')
     .pipe($.if($.if.isFile, $.cache($.imagemin({
       progressive: true,
       interlaced: true,
@@ -73,34 +89,34 @@ gulp.task('images', () => {
       console.log(err);
       this.end();
     })))
-    .pipe(gulp.dest('dist/images'));
+    .pipe(gulp.dest(path.DEST + '/images'));
 });
 
 gulp.task('fonts', () => {
   return gulp.src(require('main-bower-files')({
     filter: '**/*.{eot,svg,ttf,woff,woff2}'
-  }).concat('app/fonts/**/*'))
-    .pipe(gulp.dest('.tmp/fonts'))
-    .pipe(gulp.dest('dist/fonts'));
+  }).concat(path.SRC + '/fonts/**/*'))
+    .pipe(gulp.dest(path.TMP + '/fonts'))
+    .pipe(gulp.dest(path.DEST + '/fonts'));
 });
 
 gulp.task('extras', () => {
   return gulp.src([
-    'app/*.*',
-    '!app/*.html'
+    path.SRC + '/*.*',
+    `!${path.SRC}/*.html`
   ], {
     dot: true
-  }).pipe(gulp.dest('dist'));
+  }).pipe(gulp.dest(path.DEST));
 });
 
-gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
+gulp.task('clean', del.bind(null, [path.TMP, path.DEST]));
 
 gulp.task('serve', ['templates', 'styles', 'fonts'], () => {
   browserSync({
     notify: false,
     port: 9000,
     server: {
-      baseDir: ['.tmp', 'app'],
+      baseDir: [path.TMP, path.SRC],
       routes: {
         '/bower_components': 'bower_components'
       }
@@ -108,16 +124,16 @@ gulp.task('serve', ['templates', 'styles', 'fonts'], () => {
   });
 
   gulp.watch([
-    'app/*.html',
-    'app/scripts/**/*.js',
-    '.tmp/scripts/**/*.js',
-    'app/images/**/*',
-    '.tmp/fonts/**/*'
+    path.SRC + '/*.html',
+    path.SRC + '/scripts/**/*.js',
+    path.TMP + '/scripts/**/*.js',
+    path.SRC + '/images/**/*',
+    path.TMP + '/fonts/**/*'
   ]).on('change', reload);
 
-  gulp.watch('app/styles/**/*.scss', ['styles']);
-  gulp.watch('app/scripts/**/*.jsx', ['templates', reload]);
-  gulp.watch('app/fonts/**/*', ['fonts']);
+  gulp.watch(path.STYLES+ '/**/*.scss', ['styles']);
+  gulp.watch(path.SRC + '/scripts/**/*.jsx', ['templates', reload]);
+  gulp.watch(path.SRC + '/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
 
@@ -126,7 +142,7 @@ gulp.task('serve:dist', () => {
     notify: false,
     port: 9000,
     server: {
-      baseDir: ['dist']
+      baseDir: [path.DEST]
     }
   });
 });
@@ -150,27 +166,27 @@ gulp.task('serve:test', () => {
 
 // inject bower components
 gulp.task('wiredep', () => {
-  gulp.src('app/styles/*.scss')
+  gulp.src(path.STYLES+ '/*.scss')
     .pipe(wiredep({
       ignorePath: /^(\.\.\/)+/
     }))
-    .pipe(gulp.dest('app/styles'));
+    .pipe(gulp.dest(path.STYLES+ ''));
 
-  gulp.src('app/*.html')
+  gulp.src(path.SRC + '/*.html')
     .pipe(wiredep({
       exclude: ['bootstrap-sass'],
       ignorePath: /^(\.\.\/)*\.\./
     }))
-    .pipe(gulp.dest('app'));
+    .pipe(gulp.dest(path.SRC));
 });
 
 gulp.task('deploy', () => {
-  return gulp.src('dist/**/*')
+  return gulp.src(path.DEST + '/**/*')
     .pipe($.ghPages());
 });
 
 gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
-  return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+  return gulp.src(path.DEST + '/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
 gulp.task('default', ['clean'], () => {

@@ -1,4 +1,4 @@
-var overhorScroller = React.createClass({
+var aboveHorizontalScroller = React.createClass({
   render(){
     return(
       <div className="overhor-scroll">

@@ -1,4 +1,4 @@
-module.exports = function(vars) {
+module.exports = function() {
   // Your code
-  alert(777);
+  return "This is a module";
 };

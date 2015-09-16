@@ -1,13 +1,12 @@
-  // var testRequire = require('./test_module.jsx');
+  var testRequire = require('./test_module.jsx');
   var React = require('react');
   var Body = React.createClass({ displayName: "Body",
-    componentWillMount(){
-
-    },
+    componentWillMount(){},
     render(){
       // testRequire();
+      let test = testRequire;
       return(
-        <div>Hi World</div>
+        <div>{testRequire()}</div>
       );
     }
   });

@@ -9,7 +9,8 @@ var source = require('vinyl-source-stream');
 var watchify = require('watchify');
 var browserify = require('browserify');
 var reactify = require('reactify');
-var uglify = require('uglify');
+var babelify = require('babelify');
+var buffer = require('vinyl-buffer');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -35,6 +36,10 @@ path.TMP_SCRIPTS = `${path.TMP}/scripts`;
 
 path.DEST_BUILD = `${path.DEST}/build`;
 path.DEST_SRC = `${path.DEST}/src`;
+
+function isProd() {
+  return process.env.NODE_ENV == 'production';
+}
 
 gulp.task('styles', () => {
   return gulp.src(`${path.STYLES}/**/*.scss`)
@@ -67,20 +72,23 @@ const testLintOptions = {
   }
 };
 
+gulp.task('transpile', ['templates'], () => {
+  return browserify(`${path.SRC}/scripts/App.jsx`, {debug: true})
+      .transform(babelify)
+      .bundle()
+      .pipe($.plumber())
+      .pipe(source('App.js'))
+      .pipe(buffer())
+      .pipe($.sourcemaps.init({loadMaps: true}))
+      .pipe($.if(isProd(), $.uglify()))
+      .pipe($.sourcemaps.write('./'))
+      .pipe(gulp.dest(`${path.TMP}/scripts/`));
+});
+
 gulp.task('templates', function () {
-  // browserify({
-  //   entries: [path.ENTRY_POINT],
-  //   transform: [reactify],
-  // })
-  //   .bundle()
-  //   .pipe(source(path.MINIFIED_OUT))
-  //   .pipe(jsx())
-  //   .pipe(streamify(uglify(path.MINIFIED_OUT)))
-  //   .pipe(gulp.dest(path.DEST_BUILD));
   return gulp.src(`${path.SCRIPTS}/**/*.jsx`)
     .pipe($.plumber())
     .pipe($.react())
-
     .pipe(gulp.dest(`${path.TMP}/scripts`));
 });
 
@@ -136,7 +144,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, [path.TMP, path.DEST]));
 
-gulp.task('serve', ['templates', 'styles', 'fonts'], () => {
+gulp.task('serve', ['transpile', 'styles', 'fonts'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -148,16 +156,6 @@ gulp.task('serve', ['templates', 'styles', 'fonts'], () => {
     }
   });
 
-  browserify({
-    entries: [path.ENTRY_POINT],
-    transform: [reactify],
-  })
-    .bundle()
-    .pipe(source(path.MINIFIED_OUT))
-    //.pipe(jsx())
-    .pipe(streamify(uglify(path.MINIFIED_OUT)))
-    .pipe(gulp.dest(path.TMP_SCRIPTS));
-
   gulp.watch([
     `${path.SRC}/*.html`,
     `${path.SRC}/scripts/**/*.js`,
@@ -167,7 +165,7 @@ gulp.task('serve', ['templates', 'styles', 'fonts'], () => {
   ]).on('change', reload);
 
   gulp.watch(`${path.STYLES}/**/*.scss`, ['styles']);
-  gulp.watch(`${path.SRC}/scripts/**/*.jsx`, ['templates', reload]);
+  gulp.watch(`${path.SRC}/scripts/**/*.jsx`, ['transpile', reload]);
   gulp.watch(`${path.SRC}/fonts/**/*`, ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });

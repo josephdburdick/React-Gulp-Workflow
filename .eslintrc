@@ -1,10 +1,23 @@
 {
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
   "parser": "babel-eslint",
+  "plugins": ["react"],
   "ecmaFeatures": {
+    "globalReturn": false,
     "classes": true,
-    "jsx": true
+    "jsx": true,
+    "arrowFunctions": true,
+    "modules": true,
+    "templateStrings": true,
+    "blockBindings": true
   },
   "rules": {
-    "strict": 0
+    "strict": 0,
+    "quotes": false,
+    "no-trailing-spaces": false
   }
 }

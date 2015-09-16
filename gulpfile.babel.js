@@ -5,6 +5,13 @@ import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
 
+var source = require('vinyl-source-stream');
+var watchify = require('watchify');
+var browserify = require('browserify');
+var reactify = require('reactify');
+var babelify = require('babelify');
+var buffer = require('vinyl-buffer');
+
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
@@ -17,12 +24,22 @@ let path = {
   TMP: '.tmp',
   DEST: 'dist'
 };
+
 path.HTML = `${path.SRC}/index.html`;
 path.STYLES = `${path.SRC}/styles`;
 path.SCRIPTS = `${path.SRC}/scripts`;
 path.ENTRY_POINT = `${path.SCRIPTS}/App.jsx`;
+
+path.TMP_HTML = `${path.TMP}/index.html`;
+path.TMP_STYLES = `${path.TMP}/styles`;
+path.TMP_SCRIPTS = `${path.TMP}/scripts`;
+
 path.DEST_BUILD = `${path.DEST}/build`;
 path.DEST_SRC = `${path.DEST}/src`;
+
+function isProd() {
+  return process.env.NODE_ENV == 'production';
+}
 
 gulp.task('styles', () => {
   return gulp.src(`${path.STYLES}/**/*.scss`)
@@ -58,10 +75,28 @@ const testLintOptions = {
   },
   baseConfig: {
     ecmaFeatures: {
-      templateStrings: true
+      arrowFunctions: true,
+      blockBindings: true,
+      templateStrings: true,
+      classes: true,
+      jsx: true,
+      modules: true
     }
   }
 };
+
+gulp.task('transpile', ['templates'], () => {
+  return browserify(`${path.SRC}/scripts/App.jsx`, {debug: true})
+      .transform(babelify)
+      .bundle()
+      .pipe($.plumber())
+      .pipe(source('App.js'))
+      .pipe(buffer())
+      .pipe($.sourcemaps.init({loadMaps: true}))
+      .pipe($.if(isProd(), $.uglify()))
+      .pipe($.sourcemaps.write('./'))
+      .pipe(gulp.dest(`${path.TMP}/scripts/`));
+});
 
 gulp.task('templates', function () {
   return gulp.src(`${path.SCRIPTS}/**/*.jsx`)
@@ -75,7 +110,7 @@ gulp.task('templates', function () {
     .pipe(gulp.dest(`${path.TMP}/scripts`));
 });
 
-gulp.task('lint', lint(`${path.SRC}/scripts/**/*.js`));
+gulp.task('lint', ['transpile'], lint(`${path.SRC}/scripts/**/*.js`));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
 gulp.task('html', ['templates','styles'], () => {
@@ -127,7 +162,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, [path.TMP, path.DEST]));
 
-gulp.task('serve', ['templates', 'styles', 'fonts'], () => {
+gulp.task('serve', ['transpile', 'styles', 'fonts'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -148,7 +183,7 @@ gulp.task('serve', ['templates', 'styles', 'fonts'], () => {
   ]).on('change', reload);
 
   gulp.watch(`${path.STYLES}/**/*.scss`, ['styles']);
-  gulp.watch(`${path.SRC}/scripts/**/*.jsx`, ['templates', reload]);
+  gulp.watch(`${path.SRC}/scripts/**/*.jsx`, ['transpile', reload]);
   gulp.watch(`${path.SRC}/fonts/**/*`, ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });

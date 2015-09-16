@@ -5,10 +5,11 @@ import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
 
-/** From https://github.com/SophieV/ReactFlux_FormsApp/blob/master/gulpfile.js */
-import watchify from 'watchify';
-import browserify from 'browserify';
-/** **/
+var source = require('vinyl-source-stream');
+var watchify = require('watchify');
+var browserify = require('browserify');
+var reactify = require('reactify');
+var uglify = require('uglify');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -22,10 +23,16 @@ let path = {
   TMP: '.tmp',
   DEST: 'dist'
 };
+
 path.HTML = `${path.SRC}/index.html`;
 path.STYLES = `${path.SRC}/styles`;
 path.SCRIPTS = `${path.SRC}/scripts`;
 path.ENTRY_POINT = `${path.SCRIPTS}/App.jsx`;
+
+path.TMP_HTML = `${path.TMP}/index.html`;
+path.TMP_STYLES = `${path.TMP}/styles`;
+path.TMP_SCRIPTS = `${path.TMP}/scripts`;
+
 path.DEST_BUILD = `${path.DEST}/build`;
 path.DEST_SRC = `${path.DEST}/src`;
 
@@ -61,9 +68,19 @@ const testLintOptions = {
 };
 
 gulp.task('templates', function () {
+  // browserify({
+  //   entries: [path.ENTRY_POINT],
+  //   transform: [reactify],
+  // })
+  //   .bundle()
+  //   .pipe(source(path.MINIFIED_OUT))
+  //   .pipe(jsx())
+  //   .pipe(streamify(uglify(path.MINIFIED_OUT)))
+  //   .pipe(gulp.dest(path.DEST_BUILD));
   return gulp.src(`${path.SCRIPTS}/**/*.jsx`)
     .pipe($.plumber())
     .pipe($.react())
+
     .pipe(gulp.dest(`${path.TMP}/scripts`));
 });
 
@@ -130,6 +147,16 @@ gulp.task('serve', ['templates', 'styles', 'fonts'], () => {
       }
     }
   });
+
+  browserify({
+    entries: [path.ENTRY_POINT],
+    transform: [reactify],
+  })
+    .bundle()
+    .pipe(source(path.MINIFIED_OUT))
+    //.pipe(jsx())
+    .pipe(streamify(uglify(path.MINIFIED_OUT)))
+    .pipe(gulp.dest(path.TMP_SCRIPTS));
 
   gulp.watch([
     `${path.SRC}/*.html`,

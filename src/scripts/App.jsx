@@ -1,4 +1,7 @@
- var Body = React.createClass({ displayName: 'Body',
+  /*global React:true*/
+  var testRequire = require('./components/test_module.jsx');
+  var React = require('react');
+  var Body = React.createClass({ displayName: "Body",
     componentWillMount(){ },
     componentDidMount(){ },
     componentWillReceiveProps(){ },
@@ -7,7 +10,10 @@
     render(){
       let route = window.location.hash;
       return (
-        <div>The requested route is: {route}</div>
+        <div>
+          {testRequire()}!<br />
+          the route hash is: {route}
+        </div>
       );
     }
   });

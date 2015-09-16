@@ -15,9 +15,24 @@ $icon-font-path: '../fonts/';
 .no-boder-radius {
   border-radius: 0;
 }
+@import 'helpers/positioning';
 
 /** COMPONENTS **/
 @import 'components/cards';
+.text-rule{
+  padding: $padding-base-vertical 0;
+  position: relative;
+  &.--above{
+    &:before{
+      content: '';
+      position: absolute;
+      transform: translateY(-1.75rem);
+      width: 100%;
+      height: 0.75rem;
+      background-color: $color1;
+    }
+  }
+}
 
 /** VIEWS **/
 @import "views/home";

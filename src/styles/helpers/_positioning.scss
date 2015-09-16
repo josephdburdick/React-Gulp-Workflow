@@ -1,0 +1,36 @@
+/*****************************************************************************/
+/* Position Helpers */
+/*****************************************************************************/
+
+$units: px, rem, vh, vw;
+$sizes: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 65, 70, 75, 80, 85, 90, 95, 100;
+$positions: relative, absolute, fixed, sticky;
+$directions: top, left, bottom, right;
+
+@each $position in $positions{
+	.position-#{$position}{
+		position: $position;
+	}
+	@each $direction in $directions{
+		.position-#{$position}--#{$direction}{
+			position: #{$position};
+			#{$direction}: 0;
+		}
+		@each $unit in $units{
+			@each $size in $sizes{
+				.margin-#{$direction}--#{$size}#{$unit}{
+					margin-#{$direction}: #{$size}#{$unit};
+				}
+				.margin-#{$direction}--minus-#{$size}#{$unit}{
+					margin-#{$direction}: -#{$size}#{$unit};
+				}
+				.#{$direction}--#{$size}#{$unit}{
+					#{$direction}: #{$size}#{$unit};
+				}
+				.#{$direction}--minus-#{$size}#{$unit}{
+					#{$direction}: -#{$size}#{$unit};
+				}
+			}
+		}
+	}
+}

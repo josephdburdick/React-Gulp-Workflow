@@ -5,11 +5,6 @@ import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
 
-/** From https://github.com/SophieV/ReactFlux_FormsApp/blob/master/gulpfile.js */
-import watchify from 'watchify';
-import browserify from 'browserify';
-/** **/
-
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
@@ -48,15 +43,23 @@ function lint(files, options) {
   return () => {
     return gulp.src(files)
       .pipe($.plumber())
+      .pipe($.sourcemaps.init())
       .pipe(reload({stream: true, once: true}))
+      .pipe($.babel())
       .pipe($.eslint(options))
       .pipe($.eslint.format())
+      .pipe($.sourcemaps.write('.'))
       .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
   };
 }
 const testLintOptions = {
   env: {
     mocha: true
+  },
+  baseConfig: {
+    ecmaFeatures: {
+      templateStrings: true
+    }
   }
 };
 
@@ -64,6 +67,11 @@ gulp.task('templates', function () {
   return gulp.src(`${path.SCRIPTS}/**/*.jsx`)
     .pipe($.plumber())
     .pipe($.react())
+    .pipe($.sourcemaps.init())
+    .pipe($.eslint())
+    .pipe($.eslint.format())
+    .pipe($.babel())
+    .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest(`${path.TMP}/scripts`));
 });
 

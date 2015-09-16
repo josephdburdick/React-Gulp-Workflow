@@ -1,10 +1,15 @@
-  var Body = React.createClass({ displayName: "Body",
-    componentWillMount(){
+  import * as React from "../../bower_components/react/react.min.js";
 
-    },
+  var Body = React.createClass({ displayName: "Body",
+    componentWillMount(){ },
+    componentDidMount(){ },
+    componentWillReceiveProps(){ },
+    componentDidUpdate(prevProps, prevState){ },
+    componentWillUnmount(){ },
     render(){
+      let route = window.location.hash;
       return(
-        <div>Hello World</div>
+        <div>The requested route is: ${route}</div>
       );
     }
   });

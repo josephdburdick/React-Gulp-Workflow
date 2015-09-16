@@ -9,8 +9,6 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
-
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
@@ -24,7 +22,6 @@
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div id="yield"></div>
 
 
     <!-- Navigation -->
@@ -41,30 +38,17 @@
                 <a class="navbar-brand page-scroll" href="#page-top">Adoptive</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#team">Team</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div> -->
-            <!-- /.navbar-collapse -->
+            <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+
+              <li><a href="#">Work</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Thoughts</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Search</a></li>
+            </ul>
         </div>
         <!-- /.container-fluid -->
     </nav>
@@ -72,23 +56,40 @@
     <!-- Header -->
     <header>
         <div class="jumbotron">
+          <div class="container">
             <div class="intro-text">
-                <div class="intro-lead-in">Welcome To Our Studio!</div>
-                <div class="intro-heading">It's Nice To Meet You</div>
-                <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
+              <h1>Adoptive is strategy-led experience design</h1>
             </div>
+          </div>
         </div>
     </header>
 
     <!-- Work Section -->
     <section id="work">
       <div class="container">
+        <div class="section-title text-rule--above text-center">
+          <h2>Work</h2>
+        </div>
         <div class="row">
-          <div class="col-lg-12 text-center">
-            <span class="fa-stack fa-4x">
-              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-              <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-            </span>
+          <div class="case-studies">
+            <div class="col-sm-6">
+              <div class="card card-default case-study">
+                <div class="card-body">
+                  <div class="project-brand">Project Brand</div>
+                  <div class="project-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</div>
+                  <div class="project-link">See the case study <i class="fa fa-chevron-right"></i></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card card-default case-study">
+                <div class="card-body">
+                  <div class="project-brand">Project Brand</div>
+                  <div class="project-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</div>
+                  <div class="project-link">See the case study <i class="fa fa-chevron-right"></i></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -133,13 +134,13 @@
       </div>
     </footer>
 
-
+    <div id="yield"></div>
 
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <!-- <script src="/bower_components/react/react.js"></script> -->
+    <script src="/bower_components/react/react.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

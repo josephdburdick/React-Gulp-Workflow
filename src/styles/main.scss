@@ -1,5 +1,5 @@
 $icon-font-path: '../fonts/';
-
+@import 'variables';
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
@@ -11,13 +11,18 @@ $icon-font-path: '../fonts/';
   padding: 0.2em 0;
 }
 
-// Helpers
+/** HELPERS **/
 .no-boder-radius {
   border-radius: 0;
 }
 
+/** COMPONENTS **/
+@import 'components/cards';
+
 /** VIEWS **/
-@import "home";
+@import "views/home";
+
+
 
 
 

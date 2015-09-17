@@ -1,5 +1,5 @@
 //
-// Panels
+// Cards
 // --------------------------------------------------
 
 // Base class
@@ -11,17 +11,20 @@
   @include box-shadow(0 1px 1px rgba(0,0,0,.05));
 
   &.card-square{
-    height: 0;
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.5%;
+    min-height: 360px;
   }
 }
 
-// Panel contents
+// Card contents
 .card-body {
   padding: $panel-body-padding;
   @include clearfix;
+  &.card-body--vertical-center{
+    .flexbox &{
+      display: flex;
+
+    }
+  }
 }
 
 // Optional heading

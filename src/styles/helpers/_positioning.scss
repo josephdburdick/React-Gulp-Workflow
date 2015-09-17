@@ -3,7 +3,7 @@
 /*****************************************************************************/
 
 $units: px, rem, vh, vw;
-$sizes: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 65, 70, 75, 80, 85, 90, 95, 100;
+$sizes: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 65, 70, 75, 80, 85, 90, 95, 100;
 $positions: relative, absolute, fixed, sticky;
 $directions: top, left, bottom, right;
 
@@ -12,8 +12,14 @@ $directions: top, left, bottom, right;
 		position: $position;
 	}
 	@each $direction in $directions{
+		.padding-#{$direction}--0{
+			padding-#{$direction}: 0;
+		}
 		@each $unit in $units{
 			@each $size in $sizes{
+				.padding-#{$direction}--#{$size}#{$unit}{
+					padding-#{$direction}: #{$size}#{$unit};
+				}
 				.margin-#{$direction}--#{$size}#{$unit}{
 					margin-#{$direction}: #{$size}#{$unit};
 				}

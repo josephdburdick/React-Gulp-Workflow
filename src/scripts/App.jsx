@@ -1,43 +1,46 @@
-
-/*global React:false*/
-/*global App:false*/
-
-
 let App = {};
 App.config = require('./config.jsx')();
 App.libraries = {};
 App.libraries.React = require('react');
-App.libraries.jQuery = require('jquery');
-App.libraries.$ = App.libraries.jQuery;
+App.libraries.$ = require('jquery');
 
 App.helpers = {};
 App.helpers.heightRatio = require('./helpers/heightRatio.jsx')(App);
 
 App.components = {};
+App.components.testModule = require('./components/test_module.jsx');
+App.components.PrimaryNavigation = require('./components/PrimaryNavigation.jsx')(App);
+App.components.Footer = require('./components/Footer.jsx')(App);
+
+App.views = {};
+App.views.Home = require('./views/Home.jsx')(App);
 
 /** Main **/
 let React = App.libraries.React;
 let $ = App.libraries.$;
 
 let heightRatio = App.helpers.heightRatio;
+let testModule = App.components.testModule;
+let PrimaryNavigation = App.components.PrimaryNavigation;
+let Footer = App.components.Footer;
+let Home = App.views.Home;
 
-let testRequire = require('./components/test_module.jsx');
-let Body = React.createClass({ displayName: "Body",
-  componentWillMount(){ },
-  componentDidMount(){ },
-  componentWillReceiveProps(){ },
-  componentDidUpdate(){ },
-  componentWillUnmount(){ },
+let Body = React.createClass({
   render(){
-    let route = !!window.location.hash ? window.location.hash : "/";
+    let route = window.location.hash ? window.location.hash : "/";
+
     return (
       <div>
-        {testRequire()}!<br />
-        the route hash is: {route}
+        <PrimaryNavigation route={route} />
+        <Home />
+        <Footer />
       </div>
     );
   }
 });
+
+
+
 
 React.render(
   <Body />, document.querySelector('#yield')

@@ -1,8 +1,7 @@
 /*global React:true*/
 
-var aboveHorizontalScroller = React.createClass({
+let aboveHorizontalScroller = React.createClass({
   render(){
-    console.log(777);
     return (
       <div className='overhor-scroll'>
         <div className='overhor-scroll--container'>

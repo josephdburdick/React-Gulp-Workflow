@@ -1,4 +1,4 @@
 module.exports = () => {
   // Your code
-  return 'Hello Diego';
+  return 'Javascript modules OK';
 };

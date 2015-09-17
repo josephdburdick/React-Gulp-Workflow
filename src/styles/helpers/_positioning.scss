@@ -12,10 +12,6 @@ $directions: top, left, bottom, right;
 		position: $position;
 	}
 	@each $direction in $directions{
-		.position-#{$position}--#{$direction}{
-			position: #{$position};
-			#{$direction}: 0;
-		}
 		@each $unit in $units{
 			@each $size in $sizes{
 				.margin-#{$direction}--#{$size}#{$unit}{
@@ -34,3 +30,25 @@ $directions: top, left, bottom, right;
 		}
 	}
 }
+
+.--top{
+  top: 0;
+}
+.--right{
+  right: 0;
+}
+.--bottom{
+  bottom: 0;
+}
+.--left{
+  left: 0;
+}
+
+.vertical-center{
+	display: flex;
+	align-items: center;
+}
+
+/** Sizes **/
+.full-width{ width: 100%; }
+.full-height{ height: 100%; }

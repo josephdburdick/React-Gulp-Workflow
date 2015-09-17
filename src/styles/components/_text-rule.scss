@@ -1,0 +1,24 @@
+.text-rule{
+  padding: $padding-base-vertical 0;
+  position: relative;
+  &.--above{
+    &:before{
+      content: '';
+      position: absolute;
+      transform: translateY(-1.75rem);
+      width: 100%;
+      height: 0.75rem;
+      background-color: $color1;
+    }
+  }
+  &.--below{
+    &:before{
+      content: '';
+      position: absolute;
+      transform: translateY(1.75rem);
+      width: 100%;
+      height: 0.75rem;
+      background-color: $color1;
+    }
+  }
+}

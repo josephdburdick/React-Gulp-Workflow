@@ -751,3 +751,12 @@ img::selection {
 img::-moz-selection {
 	background: 0 0;
 }
+
+.case-studies{
+	.project-title{
+		font-size: 4vw;
+		@media(min-width: $screen-md){
+			font-size: 2vw;	
+		}
+	}
+}

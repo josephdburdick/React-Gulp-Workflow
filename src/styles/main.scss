@@ -4,6 +4,9 @@ $icon-font-path: '../fonts/';
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+html, body{
+  height: 100%;
+}
 .browserupgrade {
   margin: 0.2em 0;
   background: #ccc;
@@ -12,27 +15,15 @@ $icon-font-path: '../fonts/';
 }
 
 /** HELPERS **/
-.no-boder-radius {
+@import 'helpers/bootstrap-flex-grid';
+.no-border-radius {
   border-radius: 0;
 }
 @import 'helpers/positioning';
 
 /** COMPONENTS **/
 @import 'components/cards';
-.text-rule{
-  padding: $padding-base-vertical 0;
-  position: relative;
-  &.--above{
-    &:before{
-      content: '';
-      position: absolute;
-      transform: translateY(-1.75rem);
-      width: 100%;
-      height: 0.75rem;
-      background-color: $color1;
-    }
-  }
-}
+@import 'components/text-rule';
 
 /** VIEWS **/
 @import "views/home";

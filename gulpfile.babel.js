@@ -143,7 +143,14 @@ gulp.task('images', () => {
     .pipe(gulp.dest(`${path.DEST}/images`));
 });
 
-gulp.task('fonts', () => {
+// fix to hard copy fonts from font-awesome as they don't include their fonts in their bower.json file
+gulp.task('copy-fa-fonts', () => {
+  return gulp.src('bower_components/font-awesome/fonts/*.{eot,svg,ttf,woff,woff2}')
+    .pipe(gulp.dest(`${path.TMP}/fonts/`))
+    .pipe(gulp.dest(`${path.DEST}/fonts/`));
+});
+
+gulp.task('fonts', ['copy-fa-fonts'], () => {
   return gulp.src(require('main-bower-files')({
     filter: '**/*.{eot,svg,ttf,woff,woff2}'
   }).concat(`${path.SRC}/fonts/**/*`))

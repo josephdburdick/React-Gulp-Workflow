@@ -1,0 +1,8 @@
+//
+// Panels
+// --------------------------------------------------
+
+//
+.btn-transparent {
+  @include button-variant(inherit, transparent, transparent);
+}

@@ -2,6 +2,7 @@ $icon-font-path: '../fonts/';
 @import 'variables';
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "bower_components/font-awesome/scss/font-awesome.scss";
 // endbower
 
 html, body{
@@ -22,8 +23,11 @@ html, body{
 @import 'helpers/positioning';
 
 /** COMPONENTS **/
+@import 'components/images';
 @import 'components/cards';
+@import 'components/figures';
 @import 'components/text-rule';
+@import 'components/buttons';
 
 /** VIEWS **/
 @import "views/home";

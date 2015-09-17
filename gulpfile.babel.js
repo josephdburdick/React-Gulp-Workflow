@@ -103,14 +103,22 @@ gulp.task('templates', function () {
     .pipe($.plumber())
     .pipe($.react())
     .pipe($.sourcemaps.init())
-    .pipe($.eslint())
+    .pipe($.eslint({
+      "rules": {
+        "strict": 0,
+        "quotes": false,
+        "no-trailing-spaces": false,
+        "no-extra-boolean-cast": 2,
+        "no-var": 2
+      }
+    }))
     .pipe($.eslint.format())
     .pipe($.babel())
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest(`${path.TMP}/scripts`));
 });
 
-gulp.task('lint', ['transpile'], lint(`${path.SRC}/scripts/**/*.js`));
+gulp.task('lint', ['transpile'], lint(`${path.SRC}/scripts/**/*.js`)); //was *.js
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
 gulp.task('html', ['templates','styles'], () => {

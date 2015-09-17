@@ -17,7 +17,9 @@
   },
   "rules": {
     "strict": 0,
-    "quotes": false,
-    "no-trailing-spaces": false
+    "quotes": [1, "single"],
+    "no-trailing-spaces": false,
+    "no-extra-boolean-cast": 2,
+    "no-var": 2
   }
 }

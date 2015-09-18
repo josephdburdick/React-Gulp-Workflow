@@ -10,6 +10,7 @@ App.helpers.heightRatio = require('./helpers/heightRatio.jsx')(App);
 App.components = {};
 App.components.testModule = require('./components/test_module.jsx');
 App.components.PrimaryNavigation = require('./components/PrimaryNavigation.jsx')(App);
+App.components.Card = require('./components/Card.jsx')(App);
 App.components.Footer = require('./components/Footer.jsx')(App);
 
 App.views = {};

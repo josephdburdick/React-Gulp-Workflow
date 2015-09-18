@@ -1,7 +1,7 @@
 module.exports = (App) => {
   let React = App.libraries.React;
+  let Card = App.components.Card;
   let Home = React.createClass({
-
     render(){
       return (
         <div>
@@ -22,23 +22,23 @@ module.exports = (App) => {
               </div>
               <div className="row row-flex row-flex-wrap case-studies">
                 <div className="col-sm-6">
-                  <div className="card card-base case-study vertical-center" data-heightratio>
+                  <Card>
                     <div className="card-body">
                       <div className="project-brand">Yale Medicine</div>
                       <div className="project-title">
                         Redesigning Yale Medicine's Digital Experience</div>
                       <div className="action-link"><a href="" className="btn btn-lg btn-transparent padding-left--0">See the case study <i className="glyphicon fa fa-chevron-right"></i></a></div>
                     </div>
-                  </div>
+                  </Card>
                 </div>
                 <div className="col-sm-6">
-                  <div className="card card-base case-study vertical-center" data-heightratio>
+                  <Card>
                     <div className="card-body">
                       <div className="project-brand">Bundoo</div>
                       <div className="project-title">Building and Online Community Among New Parents</div>
                       <div className="action-link"><a href="" className="btn btn-lg btn-transparent padding-left--0">See the case study <i className="glyphicon fa fa-chevron-right"></i></a></div>
                     </div>
-                  </div>
+                  </Card>
                 </div>
               </div>
             </div>
@@ -52,7 +52,7 @@ module.exports = (App) => {
                 <div className="col-sm-12">
                   <figure className="figure --tint --white bg-cover" data-heightratio>
                     <div className="figure-body">
-                      <div className="position-absolute --bottom full-width text-center">
+                      <div className="position-absolute--bottom full-width text-center">
                         <div className="action-link"><a href="" className="btn btn-lg btn-transparent padding-left--0">See what we do <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </div>
                     </div>

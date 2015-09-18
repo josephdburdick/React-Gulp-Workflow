@@ -20,7 +20,7 @@ module.exports = (App) => {
               <div className="section-title text-center">
                 <h2><span className="text-rule --above">Work</span></h2>
               </div>
-              <div className="row row-flex row-flex-wrap case-studies">
+              <div className="row row-flex-wrap case-studies">
                 <div className="col-sm-6">
                   <div className="card card-base case-study vertical-center" data-heightratio>
                     <div className="card-body">

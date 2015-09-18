@@ -22,7 +22,7 @@ module.exports = (App) => {
               </div>
               <div className="row row-flex row-flex-wrap case-studies">
                 <div className="col-sm-6">
-                  <div className="card card-base case-study vertical-center" data-heightRatio>
+                  <div className="card card-base case-study vertical-center" data-heightratio>
                     <div className="card-body">
                       <div className="project-brand">Yale Medicine</div>
                       <div className="project-title">
@@ -32,7 +32,7 @@ module.exports = (App) => {
                   </div>
                 </div>
                 <div className="col-sm-6">
-                  <div className="card card-base case-study vertical-center" data-heightRatio>
+                  <div className="card card-base case-study vertical-center" data-heightratio>
                     <div className="card-body">
                       <div className="project-brand">Bundoo</div>
                       <div className="project-title">Building and Online Community Among New Parents</div>
@@ -50,7 +50,7 @@ module.exports = (App) => {
               </div>
               <div className="row">
                 <div className="col-sm-12">
-                  <figure className="figure --tint --white bg-cover" data-heightRatio>
+                  <figure className="figure --tint --white bg-cover" data-heightratio>
                     <div className="figure-body">
                       <div className="position-absolute --bottom full-width text-center">
                         <div className="action-link"><a href="" className="btn btn-lg btn-transparent padding-left--0">See what we do <i className="glyphicon fa fa-chevron-right"></i></a></div>

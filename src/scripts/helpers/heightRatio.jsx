@@ -4,9 +4,10 @@ module.exports = (App) => {
 
   let heightRatio = () =>{
     $(window).on('resize', () =>{
-      $('[data-heightRatio]').each(function(){
-        let ratio = $(this).attr('data-heightRatio') ? parseFloat($(this).attr('data-heightRatio')) : config.defaults.heightRatio;
-        $(this).css({'min-height': $(this).outerWidth() * ratio });
+      $('[data-heightratio]').each(function(){
+        // let ratio = $(this).attr('data-heightRatio') ? parseFloat($(this).attr('data-heightratio')) : config.defaults.heightRatio;
+        let ratio = config.defaults.heightRatio;
+        $(this).css({'min-height': Math.round($(this).outerWidth() * ratio )});
       });
     }).trigger('resize');
   };

@@ -20,7 +20,7 @@ let React = App.libraries.React;
 let $ = App.libraries.$;
 
 let heightRatio = App.helpers.heightRatio;
-let testModule = App.components.testModule;
+//let testModule = App.components.testModule;
 let PrimaryNavigation = App.components.PrimaryNavigation;
 let Footer = App.components.Footer;
 let Home = App.views.Home;

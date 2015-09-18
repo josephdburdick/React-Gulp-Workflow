@@ -8,9 +8,11 @@ module.exports = (App) => {
           <header>
             <div className="jumbotron">
               <div className="container">
-                <div className="intro-text">
-                  <h1>Adoptive is strategy-led experience design</h1>
-                  <h3></h3>
+                <div className="row">
+                  <div className="intro-text col-sm-6 text-left">
+                    <h1>Adoptive is strategy-led experience design</h1>
+                    <a href="#" className="btn-primary btn-outline btn-lg">Learn more</a>
+                  </div>
                 </div>
               </div>
             </div>

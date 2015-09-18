@@ -11,7 +11,12 @@ $directions: top, left, bottom, right;
 	.position-#{$position}{
 		position: $position;
 	}
+
 	@each $direction in $directions{
+		.position-#{$position}--#{$direction}{
+			position: $position;
+		  #{$direction}: 0;
+		}
 		.padding-#{$direction}--0{
 			padding-#{$direction}: 0;
 		}
@@ -35,19 +40,6 @@ $directions: top, left, bottom, right;
 			}
 		}
 	}
-}
-
-.--top{
-  top: 0;
-}
-.--right{
-  right: 0;
-}
-.--bottom{
-  bottom: 0;
-}
-.--left{
-  left: 0;
 }
 
 .vertical-center{

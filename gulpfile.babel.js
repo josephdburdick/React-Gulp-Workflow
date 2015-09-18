@@ -42,7 +42,7 @@ function isProd() {
 }
 
 gulp.task('styles', () => {
-  return gulp.src(`${path.STYLES}/**/*.scss`)
+  return gulp.src(`${path.STYLES}/main.scss`)
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
@@ -98,6 +98,11 @@ gulp.task('transpile', ['templates'], () => {
       .pipe(gulp.dest(`${path.TMP}/scripts/`));
 });
 
+gulp.task('copyTranspiledJStoDist', ['transpile'], () => {
+  return gulp.src(`${path.TMP}/scripts/*.js`)
+    .pipe(gulp.dest(`${path.DEST}/scripts/`));
+});
+
 gulp.task('templates', function () {
   return gulp.src(`${path.SCRIPTS}/**/*.jsx`)
     .pipe($.plumber())
@@ -118,17 +123,17 @@ gulp.task('templates', function () {
     .pipe(gulp.dest(`${path.TMP}/scripts`));
 });
 
-gulp.task('lint', ['transpile'], lint(`${path.SRC}/scripts/**/*.js`)); //was *.js
+gulp.task('lint', ['transpile'], lint(`${path.SRC}/scripts/**/*.js`));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
-gulp.task('html', ['templates','styles'], () => {
+gulp.task('html', ['templates', 'styles'], () => {
   const assets = $.useref.assets({searchPath: [path.TMP, path.SRC, '.']});
 
   return gulp.src(`${path.SRC}/*.html`)
     .pipe($.plumber())
     .pipe(assets)
     //.pipe($.if('*.js', $.uglify()))
-    .pipe($.if('*.css', $.minifyCss({compatibility: '*'})))
+    //.pipe($.if('*.css', $.minifyCss({compatibility: '*'})))
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
@@ -251,8 +256,8 @@ gulp.task('deploy', () => {
     .pipe($.ghPages());
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
-  return gulp.src(path.DEST + '/**/*').pipe($.size({title: 'build', gzip: true}));
+gulp.task('build', ['lint', 'copyTranspiledJStoDist', 'html', 'images', 'fonts', 'extras'], () => {
+  return gulp.src(`${path.DEST}/**/*`).pipe($.size({title: 'build', gzip: true}));
 });
 
 gulp.task('default', ['clean'], () => {

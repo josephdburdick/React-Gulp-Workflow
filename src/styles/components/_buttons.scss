@@ -1,8 +1,49 @@
 //
-// Panels
+// Buttons
 // --------------------------------------------------
 
 //
+.btn, [class*='btn-']{ text-decoration: none !important; }
 .btn-transparent {
   @include button-variant(inherit, transparent, transparent);
+}
+
+.btn-outline {
+  background-color: transparent !important;
+  color: inherit;
+  transition: all .5s;
+  border: 1px solid;
+}
+
+.btn-primary.btn-outline {
+  color: $brand-primary;
+  border-color: $brand-primary;
+}
+
+.btn-success.btn-outline {
+  color: $brand-success;
+  border-color: $brand-primary;
+}
+
+.btn-info.btn-outline {
+  color: $brand-info;
+  border-color: $brand-primary;
+}
+
+.btn-warning.btn-outline {
+  color: $brand-warning;
+  border-color: $brand-primary;
+}
+
+.btn-danger.btn-outline {
+  color: $brand-danger;
+  border-color: $brand-primary;
+}
+
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+  color: $brand-black;
 }

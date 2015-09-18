@@ -29373,7 +29373,7 @@ module.exports = function (App) {
             ),
             React.createElement(
               "div",
-              { className: "row row-flex row-flex-wrap case-studies" },
+              { className: "row row-flex-wrap case-studies" },
               React.createElement(
                 "div",
                 { className: "col-sm-6" },

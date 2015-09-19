@@ -10,7 +10,7 @@ module.exports = (App) => {
               <div className="container">
                 <div className="row">
                   <div className="intro-text col-sm-6 text-left">
-                    <h1>Work Page !!</h1>
+                    <h1>This is the Work page</h1>
                     <a href="#" className="btn-black btn-outline btn-lg">Learn more</a>
                   </div>
                 </div>

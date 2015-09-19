@@ -1,6 +1,6 @@
 module.exports = (App) => {
-  let React = require('react');
-  let Card = App.components.Card(App);
+  let React = App.libraries.React;
+  let Card = App.components.Card;
   let Home = React.createClass({
     render(){
       return (

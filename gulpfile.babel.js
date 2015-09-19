@@ -5,12 +5,12 @@ import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
 
-import source from 'vinyl-source-stream';
-import watchify from 'watchify';
-import browserify from 'browserify';
-import reactify from 'reactify';
-import babelify from 'babelify';
-import buffer from 'vinyl-buffer';
+var source = require('vinyl-source-stream');
+var watchify = require('watchify');
+var browserify = require('browserify');
+var reactify = require('reactify');
+var babelify = require('babelify');
+var buffer = require('vinyl-buffer');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -116,7 +116,7 @@ gulp.task('copyTranspiledJStoDist', ['transpile'], () => {
 gulp.task('templates', function () {
   return gulp.src(`${path.SCRIPTS}/**/*.jsx`)
     .pipe($.plumber())
-    .pipe($.babel())
+    // .pipe($.babel())
     .pipe($.react())
     //.pipe($.babel())
     .pipe($.sourcemaps.init())

@@ -1,10 +1,9 @@
-module.exports = (App, element) => {
+module.exports = (element) => {
   let $ = require('jquery');
-  const config = App.config;
 
   $(window).on('resize', () => {
     $(element).each(function(){
-      let ratio = config.defaults.heightRatio;
+      let ratio = $(this).data('heightratio');
       $(this).css({'min-height': Math.round($(this).outerWidth() * ratio )});
     });
   }).trigger('resize');

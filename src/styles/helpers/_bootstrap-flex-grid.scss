@@ -24,14 +24,14 @@
 }
 
 .flex-col {
-    display: flex;
-    display: -webkit-flex;
-    flex: 1 100%;
+  display: flex;
+  display: -webkit-flex;
+  flex: 1 100%;
 	flex-flow: column nowrap;
 }
 
 .flex-grow {
 	display: flex;
-    -webkit-flex: 2;
-    flex: 2;
+  -webkit-flex: 2;
+  flex: 2;
 }

@@ -15,6 +15,11 @@
   border: 1px solid;
 }
 
+.btn-black.btn-outline {
+  color: $brand-black;
+  border-color: $brand-black;
+}
+
 .btn-primary.btn-outline {
   color: $brand-primary;
   border-color: $brand-primary;

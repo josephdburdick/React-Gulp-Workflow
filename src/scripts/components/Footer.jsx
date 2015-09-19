@@ -1,7 +1,6 @@
 module.exports = (App) => {
   let React = App.libraries.React;
   let Footer = React.createClass({
-
     render(){
       return (
         <footer>

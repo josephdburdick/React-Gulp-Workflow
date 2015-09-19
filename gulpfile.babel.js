@@ -5,12 +5,12 @@ import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
 
-var source = require('vinyl-source-stream');
-var watchify = require('watchify');
-var browserify = require('browserify');
-var reactify = require('reactify');
-var babelify = require('babelify');
-var buffer = require('vinyl-buffer');
+import source from 'vinyl-source-stream';
+import watchify from 'watchify';
+import browserify from 'browserify';
+import reactify from 'reactify';
+import babelify from 'babelify';
+import buffer from 'vinyl-buffer';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -92,6 +92,16 @@ gulp.task('transpile', ['templates'], () => {
       .pipe($.plumber())
       .pipe(source('App.js'))
       .pipe(buffer())
+      .pipe($.eslint({
+        "rules": {
+          "strict": 0,
+          "quotes": false,
+          "no-trailing-spaces": false,
+          "no-extra-boolean-cast": 2
+          // "no-var": 2
+        }
+      }))
+      .pipe($.eslint.format())
       .pipe($.sourcemaps.init({loadMaps: true}))
       .pipe($.if(isProd(), $.uglify()))
       .pipe($.sourcemaps.write('./'))
@@ -106,19 +116,10 @@ gulp.task('copyTranspiledJStoDist', ['transpile'], () => {
 gulp.task('templates', function () {
   return gulp.src(`${path.SCRIPTS}/**/*.jsx`)
     .pipe($.plumber())
-    .pipe($.react())
-    .pipe($.sourcemaps.init())
-    .pipe($.eslint({
-      "rules": {
-        "strict": 0,
-        "quotes": false,
-        "no-trailing-spaces": false,
-        "no-extra-boolean-cast": 2,
-        "no-var": 2
-      }
-    }))
-    .pipe($.eslint.format())
     .pipe($.babel())
+    .pipe($.react())
+    //.pipe($.babel())
+    .pipe($.sourcemaps.init())
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest(`${path.TMP}/scripts`));
 });

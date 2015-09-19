@@ -1,6 +1,6 @@
 module.exports = (App) => {
-  let React = require('react');
-  let Card = App.components.Card(App);
+  let React = App.libraries.React;
+  let Card = App.components.Card;
   let Home = React.createClass({
     render(){
       return (
@@ -10,7 +10,7 @@ module.exports = (App) => {
               <div className="container">
                 <div className="row">
                   <div className="intro-text col-sm-6 text-left">
-                    <h1>Adoptive is strategy-led experience design</h1>
+                    <h1>About Page yo</h1>
                     <a href="#" className="btn-black btn-outline btn-lg">Learn more</a>
                   </div>
                 </div>

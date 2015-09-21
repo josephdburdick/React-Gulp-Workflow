@@ -7,3 +7,6 @@
 meteor-platform
 autopublish
 insecure
+sacha:autorouter
+fourseven:scss
+reywood:bootstrap3-sass

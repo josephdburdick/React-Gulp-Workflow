@@ -1,6 +1,6 @@
-module.exports = (App) => {
-  let React = App.libraries.React;
-  let Footer = React.createClass({
+let
+  React = require('react'),
+  Footer = React.createClass({
     render(){
       return (
         <footer>
@@ -16,5 +16,5 @@ module.exports = (App) => {
       );
     }
   });
-  return Footer;
-};
+
+module.exports = Footer;

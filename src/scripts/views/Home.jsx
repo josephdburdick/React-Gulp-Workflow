@@ -1,23 +1,18 @@
+let
+  App = require('../App.jsx'),
+  React = require('react'),
+  Card = require('../components/Card.jsx'),
+  ProportionalBlock = require('../components/ProportionalBlock.jsx'),
+  Jumbotron = require('../components/Jumbotron.jsx'),
 
-  let App = require('../App.jsx');
-  let React = require('react');
-  let Card = require('../components/Card.jsx');
-  let Home = React.createClass({
+  Home = React.createClass({
     render(){
       return (
         <div>
-          <header>
-            <div className="jumbotron">
-              <div className="container">
-                <div className="row">
-                  <div className="intro-text col-sm-6 text-left">
-                    <h1>Adoptive is strategy-led experience design</h1>
-                    <a href="#/about" className="btn-black btn-outline btn-lg">Learn more</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </header>
+          <Jumbotron>
+            <h1>Adoptive is strategy-led experience design</h1>
+            <a href="#/about" className="btn-black btn-outline btn-lg">Learn more</a>
+          </Jumbotron>
           <section id="work">
             <div className="container">
               <div className="section-title text-center">
@@ -53,13 +48,15 @@
               </div>
               <div className="row">
                 <div className="col-sm-12">
-                  <figure className="figure --tint --white bg-cover" data-heightratio>
-                    <div className="figure-body">
-                      <div className="position-absolute--bottom full-width text-center">
-                        <div className="action-link"><a href="" className="btn btn-lg btn-transparent padding-left--0">See what we do <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                  <ProportionalBlock background="purple url('')">
+                    <figure className="figure --tint --white bg-cover" data-heightratio>
+                      <div className="figure-body">
+                        <div className="position-absolute--bottom full-width text-center">
+                          <div className="action-link"><a href="" className="btn btn-lg btn-transparent padding-left--0">See what we do <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                        </div>
                       </div>
-                    </div>
-                  </figure>
+                    </figure>
+                  </ProportionalBlock>
                 </div>
               </div>
             </div>

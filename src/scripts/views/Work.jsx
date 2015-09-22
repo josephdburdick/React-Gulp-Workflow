@@ -1,22 +1,17 @@
 
-  let React = require('react');
-  let Card = require('../components/Card.jsx');
-  let Work = React.createClass({
+let
+  React = require('react'),
+  Card = require('../components/Card.jsx'),
+  Jumbotron = require('../components/Jumbotron.jsx'),
+
+  Work = React.createClass({
     render(){
       return (
         <div>
-          <header>
-            <div className="jumbotron">
-              <div className="container">
-                <div className="row">
-                  <div className="intro-text col-sm-6 text-left">
-                    <h1>This is the Work page</h1>
-                    <a href="#/about" className="btn-black btn-outline btn-lg">Learn more</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </header>
+          <Jumbotron>
+            <h1>This is the Work page</h1>
+            <a href="#/about" className="btn-black btn-outline btn-lg">Learn more</a>
+          </Jumbotron>
           <section id="work">
             <div className="container">
               <div className="section-title text-center">
@@ -87,4 +82,5 @@
       );
     }
   });
-  module.exports = Work;
+  
+module.exports = Work;

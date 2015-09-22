@@ -85,12 +85,13 @@ const testLintOptions = {
   }
 };
 
-gulp.task('transpile', ['templates'], () => {
+gulp.task('transpile', () => { //['templates']
   return browserify(`${path.SRC}/scripts/App.jsx`, {debug: true})
+      .transform(reactify)
       .transform(babelify)
       .bundle()
       .pipe($.plumber())
-      .pipe(source('App.js'))
+      .pipe(source('App.jsx'))
       .pipe(buffer())
       .pipe($.eslint({
         "rules": {
@@ -98,10 +99,9 @@ gulp.task('transpile', ['templates'], () => {
           "quotes": false,
           "no-trailing-spaces": false,
           "no-extra-boolean-cast": 2
-          // "no-var": 2
         }
       }))
-      .pipe($.eslint.format())
+      // .pipe($.eslint.format())
       .pipe($.sourcemaps.init({loadMaps: true}))
       .pipe($.if(isProd(), $.uglify()))
       .pipe($.sourcemaps.write('./'))
@@ -113,18 +113,18 @@ gulp.task('copyTranspiledJStoDist', ['transpile'], () => {
     .pipe(gulp.dest(`${path.DEST}/scripts/`));
 });
 
-gulp.task('templates', function () {
-  return gulp.src(`${path.SCRIPTS}/**/*.jsx`)
-    .pipe($.plumber())
-    // .pipe($.babel())
-    .pipe($.react())
-    //.pipe($.babel())
-    .pipe($.sourcemaps.init())
-    .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest(`${path.TMP}/scripts`));
-});
+// gulp.task('templates', function () {
+//   return gulp.src(`${path.SCRIPTS}/**/*.jsx`)
+//     .pipe($.plumber())
+//     .pipe($.babel())
+//     .pipe($.react())
+//     // .pipe($.babel())
+//     // .pipe($.sourcemaps.init())
+//     // .pipe($.sourcemaps.write('.'))
+//     .pipe(gulp.dest(`${path.TMP}/scripts`));
+// });
 
-gulp.task('lint', ['transpile'], lint(`${path.SRC}/scripts/**/*.js`));
+gulp.task('lint', ['transpile'], lint(`${path.SRC}/scripts/**/*.jsx`));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
 gulp.task('html', ['templates', 'styles'], () => {

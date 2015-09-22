@@ -1,6 +1,6 @@
-module.exports = (App) => {
-  let React = App.libraries.React;
-  let Card = App.components.Card;
+  let App = require('../App.jsx');
+  let React = require('react');
+  let Card = require('../components/Card.jsx');
   let Home = React.createClass({
     render(){
       return (
@@ -11,7 +11,7 @@ module.exports = (App) => {
                 <div className="row">
                   <div className="intro-text col-sm-6 text-left">
                     <h1>About Page yo</h1>
-                    <a href="#" className="btn-black btn-outline btn-lg">Learn more</a>
+                    <a href="#/work" className="btn-black btn-outline btn-lg">Learn more</a>
                   </div>
                 </div>
               </div>
@@ -87,5 +87,4 @@ module.exports = (App) => {
       );
     }
   });
-  return Home;
-};
+  module.exports = Home;

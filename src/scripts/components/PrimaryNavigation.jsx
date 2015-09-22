@@ -1,6 +1,5 @@
-module.exports = (App) => {
-  // let React = require('react');
-  let React = App.libraries.React;
+
+  let React = require('react');
   // let { Router, Route, Link } from 'react-router';
   // let Router = App.Router,
   //     Route = App.Route,
@@ -59,5 +58,4 @@ module.exports = (App) => {
   //   color: dark
   // });
 
-  return PrimaryNavigation;
-};
+  module.exports = PrimaryNavigation;

@@ -10,20 +10,16 @@ let App = {
   components: {},
   views: {}
 };
-let React = require('react');
-let ReactRouter = require('react-router');
-let Router = ReactRouter.Router;
-let Route = ReactRouter.Route;
-let Link = ReactRouter.Link;
+let React = require('react'),
+    Router = require('react-router'),
+    Route = Router.Route,
+    Link = Router.Link,
+    DefaultRoute = Router.DefaultRoute,
+    RouteHandler = Router.RouteHandler,
+    MainContainer = require('./components/MainContainer.jsx');
 
-// App.helpers.heightRatio = require('./helpers/heightRatio.jsx');
-
-// App.components.PrimaryNavigation = require('./components/PrimaryNavigation.jsx');
-App.components.Card = require('./components/Card.jsx');
-// App.components.Footer = require('./components/Footer.jsx')(App);
-
-App.views.Home = require('./views/Home.jsx')(App);
-App.views.About = require('./views/About.jsx')(App);
+App.views.Home = require('./views/Home.jsx');
+App.views.About = require('./views/About.jsx');
 App.views.Work = require('./views/Work.jsx');
 
 /** Main **/
@@ -35,13 +31,14 @@ App.views.Work = require('./views/Work.jsx');
 
 
 let routes = (
-  <Route path="/" handler={App.views.Home}>
-    <Route path="work" handler={App.views.Work}/>
-    <Route path="about" handler={App.views.Home}/>
+  <Route path="/" handler={MainContainer}>
+    <Route name="home" handler={App.views.Home}/>
+    <Route name="work" handler={App.views.Work}/>
+    <Route name="about" handler={App.views.About}/>
   </Route>
 );
 
-ReactRouter.run(routes, function (Handler) {
+Router.run(routes, Router.HashLocation, function (Handler) {
   React.render(<Handler/>, document.querySelector('#yield'));
 });
 

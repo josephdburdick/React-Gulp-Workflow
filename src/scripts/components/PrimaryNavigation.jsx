@@ -23,10 +23,10 @@ let PrimaryNavigation = React.createClass({
 
           <div id="navbar" className="navbar-collapse collapse">
             <ul className="nav navbar-nav">
-              <li><a href="/#/work">Work</a></li>
-              <li><a href="/#/services">Services</a></li>
-              <li><a href="/#/about">About Us</a></li>
-              <li><a href="/#/thoughts">Thoughts</a></li>
+              <li><a href="#/work">Work</a></li>
+              <li><a href="#/services">Services</a></li>
+              <li><a href="#/about">About Us</a></li>
+              <li><a href="#/thoughts">Thoughts</a></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li><a href="#">Search</a></li>
@@ -38,4 +38,4 @@ let PrimaryNavigation = React.createClass({
   }
 });
 
-  module.exports = PrimaryNavigation;
+module.exports = PrimaryNavigation;

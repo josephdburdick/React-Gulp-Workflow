@@ -1,7 +1,7 @@
-  let App = require('../App.jsx');
-  let React = require('react');
-  let Card = require('../components/Card.jsx');
-  let Home = React.createClass({
+let
+  React = require('react');
+  Card = require('../components/Card');
+  Home = React.createClass({
     render(){
       return (
         <div>

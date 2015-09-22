@@ -1,7 +1,7 @@
 var React = require('react'),
     Router = require('react-router'),
     RouteHandler = Router.RouteHandler,
-    PrimaryNavigation = require('./PrimaryNavigation.jsx');
+    PrimaryNavigation = require('./PrimaryNavigation');
 
 var MainContainer = React.createClass({
 

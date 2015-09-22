@@ -1,11 +1,9 @@
-let
-  App = require('../App.jsx'),
-  React = require('react'),
-  Card = require('../components/Card.jsx'),
-  ProportionalBlock = require('../components/ProportionalBlock.jsx'),
-  Jumbotron = require('../components/Jumbotron.jsx'),
+let React = require('react');
+let Card = require('../components/Card');
+let ProportionalBlock = require('../components/ProportionalBlock');
+let Jumbotron = require('../components/Jumbotron');
 
-  Home = React.createClass({
+let Home = React.createClass({
     render(){
       return (
         <div>

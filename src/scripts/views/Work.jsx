@@ -1,8 +1,7 @@
-
 let
   React = require('react'),
-  Card = require('../components/Card.jsx'),
-  Jumbotron = require('../components/Jumbotron.jsx'),
+  Card = require('../components/Card'),
+  Jumbotron = require('../components/Jumbotron'),
 
   Work = React.createClass({
     render(){
@@ -82,5 +81,5 @@ let
       );
     }
   });
-  
+
 module.exports = Work;

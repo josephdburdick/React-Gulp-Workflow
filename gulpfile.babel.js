@@ -1,16 +1,19 @@
 // generated on 2015-09-11 using generator-gulp-webapp 1.0.3
+
+/*eslint no-process-exit:0 */
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
 
-var source = require('vinyl-source-stream');
-var watchify = require('watchify');
-var browserify = require('browserify');
-var reactify = require('reactify');
-var babelify = require('babelify');
-var buffer = require('vinyl-buffer');
+let
+  source = require('vinyl-source-stream'),
+  watchify = require('watchify'),
+  browserify = require('browserify'),
+  reactify = require('reactify'),
+  babelify = require('babelify'),
+  buffer = require('vinyl-buffer');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -56,19 +59,6 @@ gulp.task('styles', () => {
     .pipe(reload({stream: true}));
 });
 
-function lint(files, options) {
-  return () => {
-    return gulp.src(files)
-      .pipe($.plumber())
-      .pipe($.sourcemaps.init())
-      .pipe(reload({stream: true, once: true}))
-      .pipe($.babel())
-      .pipe($.eslint(options))
-      .pipe($.eslint.format())
-      .pipe($.sourcemaps.write('.'))
-      .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
-  };
-}
 const testLintOptions = {
   env: {
     mocha: true
@@ -85,13 +75,34 @@ const testLintOptions = {
   }
 };
 
-gulp.task('transpile', () => { //['templates']
-  return browserify(`${path.SRC}/scripts/App.jsx`, {debug: true})
-      .transform(reactify)
+function lint(files, options) {
+  return () => {
+    console.log(files);
+    return gulp.src(files)
+      .pipe($.plumber())
+      .pipe($.sourcemaps.init())
+      .pipe(reload({stream: true, once: true}))
+      // .pipe($.babel())
+      .pipe($.eslint(testLintOptions))
+      .pipe($.eslint.format('stylish'))
+      .pipe($.sourcemaps.write('.'))
+      .pipe($.if(!browserSync.active, $.eslint.failAfterError())
+        .pipe(gulp.dest('../output')));
+  };
+}
+
+gulp.task('reactify', () => {
+  return gulp.src(`${path.SRC}/scripts/**/*.jsx`)
+    .pipe($.react())
+    .pipe(gulp.dest(`${path.TMP}/scripts/`));
+});
+
+gulp.task('transpile', ['reactify'], () => { //['templates']
+  return browserify(`${path.TMP}/scripts/App.js`, {debug: true})
       .transform(babelify)
       .bundle()
       .pipe($.plumber())
-      .pipe(source('App.jsx'))
+      .pipe(source('App.js'))
       .pipe(buffer())
       .pipe($.eslint({
         "rules": {
@@ -101,40 +112,29 @@ gulp.task('transpile', () => { //['templates']
           "no-extra-boolean-cast": 2
         }
       }))
-      // .pipe($.eslint.format())
-      .pipe($.sourcemaps.init({loadMaps: true}))
+      .pipe($.eslint.format('stylish'))
+      .pipe($.sourcemaps.init()) //{loadMaps: true}
       .pipe($.if(isProd(), $.uglify()))
       .pipe($.sourcemaps.write('./'))
       .pipe(gulp.dest(`${path.TMP}/scripts/`));
 });
 
-gulp.task('copyTranspiledJStoDist', ['transpile'], () => {
+gulp.task('copyTranspiledJStoDist', ['lint'], () => {
   return gulp.src(`${path.TMP}/scripts/*.js`)
     .pipe(gulp.dest(`${path.DEST}/scripts/`));
 });
 
-// gulp.task('templates', function () {
-//   return gulp.src(`${path.SCRIPTS}/**/*.jsx`)
-//     .pipe($.plumber())
-//     .pipe($.babel())
-//     .pipe($.react())
-//     // .pipe($.babel())
-//     // .pipe($.sourcemaps.init())
-//     // .pipe($.sourcemaps.write('.'))
-//     .pipe(gulp.dest(`${path.TMP}/scripts`));
-// });
-
-gulp.task('lint', ['transpile'], lint(`${path.SRC}/scripts/**/*.jsx`));
+gulp.task('lint', ['transpile'], lint(`${path.TMP}/scripts/App.js`));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
-gulp.task('html', ['templates', 'styles'], () => {
+gulp.task('html', ['transpile', 'styles'], () => {
   const assets = $.useref.assets({searchPath: [path.TMP, path.SRC, '.']});
 
   return gulp.src(`${path.SRC}/*.html`)
     .pipe($.plumber())
     .pipe(assets)
-    //.pipe($.if('*.js', $.uglify()))
-    //.pipe($.if('*.css', $.minifyCss({compatibility: '*'})))
+    .pipe($.if('*.js', $.uglify()))
+    .pipe($.if('*.css', $.minifyCss({compatibility: '*'})))
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
@@ -197,7 +197,7 @@ gulp.task('serve', ['transpile', 'styles', 'fonts'], () => {
 
   gulp.watch([
     `${path.SRC}/*.html`,
-    `${path.SRC}/scripts/**/*.js`,
+    `${path.SRC}/scripts/**/*.jsx`,
     `${path.TMP}/scripts/**/*.js`,
     `${path.SRC}/images/**/*`,
     `${path.TMP}/fonts/**/*`
@@ -263,4 +263,11 @@ gulp.task('build', ['lint', 'copyTranspiledJStoDist', 'html', 'images', 'fonts',
 
 gulp.task('default', ['clean'], () => {
   gulp.start('build');
+});
+
+process.on('exit', () => {
+  if (gulp.fail) {
+    // return non-zero exit code
+    process.exit(1);
+  }
 });

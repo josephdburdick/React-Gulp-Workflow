@@ -254,7 +254,7 @@ gulp.task('wiredep', () => {
 
 gulp.task('deploy', () => {
   return gulp.src(`${path.DEST}/**/*`)
-    .pipe($.ghPages());
+    .pipe($.ghPages('git@github.com:josephdburdick/adoptive-2015'));
 });
 
 gulp.task('build', ['lint', 'copyTranspiledJStoDist', 'html', 'images', 'fonts', 'extras'], () => {

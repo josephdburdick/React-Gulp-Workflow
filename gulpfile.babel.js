@@ -82,7 +82,6 @@ function lint(files, options) {
       .pipe($.plumber())
       .pipe($.sourcemaps.init())
       .pipe(reload({stream: true, once: true}))
-      // .pipe($.babel())
       .pipe($.eslint(testLintOptions))
       .pipe($.eslint.format('stylish'))
       .pipe($.sourcemaps.write('.'))
@@ -94,15 +93,16 @@ function lint(files, options) {
 gulp.task('reactify', () => {
   return gulp.src(`${path.SRC}/scripts/**/*.jsx`)
     .pipe($.react())
+    .pipe($.babel())
     .pipe(gulp.dest(`${path.TMP}/scripts/`));
 });
 
 gulp.task('transpile', ['reactify'], () => { //['templates']
   return browserify(`${path.TMP}/scripts/App.js`, {debug: true})
-      .transform(babelify)
+      // .transform(babelify)
       .bundle()
       .pipe($.plumber())
-      .pipe(source('App.js'))
+      .pipe(source('App.js')) //App.js
       .pipe(buffer())
       .pipe($.eslint({
         "rules": {

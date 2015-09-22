@@ -1,9 +1,9 @@
-var React = require('react'),
+let React = require('react'),
     Router = require('react-router'),
     RouteHandler = Router.RouteHandler,
     PrimaryNavigation = require('./PrimaryNavigation');
 
-var MainContainer = React.createClass({
+let MainContainer = React.createClass({
 
   // <RouteHandler/> specifies the destination in the DOM where "pages" content is rendered
   render: function () {

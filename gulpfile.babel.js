@@ -1,6 +1,6 @@
 // generated on 2015-09-11 using generator-gulp-webapp 1.0.3
-
 /*eslint no-process-exit:0 */
+/*jshint strict: false */
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
@@ -9,20 +9,13 @@ import {stream as wiredep} from 'wiredep';
 
 let
   source = require('vinyl-source-stream'),
-  watchify = require('watchify'),
   browserify = require('browserify'),
-  reactify = require('reactify'),
-  babelify = require('babelify'),
   buffer = require('vinyl-buffer');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 let path = {
-  NOT_MINIFIED: 'build.js',
-  MINIFIED_OUT: 'build.min.js',
-  OUT: 'build.js',
-  /** DIR **/
   SRC: 'src',
   TMP: '.tmp',
   DEST: 'dist'
@@ -41,7 +34,7 @@ path.DEST_BUILD = `${path.DEST}/build`;
 path.DEST_SRC = `${path.DEST}/src`;
 
 function isProd() {
-  return process.env.NODE_ENV == 'production';
+  return process.env.NODE_ENV === 'production';
 }
 
 gulp.task('styles', () => {
@@ -77,7 +70,6 @@ const testLintOptions = {
 
 function lint(files, options) {
   return () => {
-    console.log(files);
     return gulp.src(files)
       .pipe($.plumber())
       .pipe($.sourcemaps.init())
@@ -99,17 +91,16 @@ gulp.task('reactify', () => {
 
 gulp.task('transpile', ['reactify'], () => { //['templates']
   return browserify(`${path.TMP}/scripts/App.js`, {debug: true})
-      // .transform(babelify)
       .bundle()
       .pipe($.plumber())
       .pipe(source('App.js')) //App.js
       .pipe(buffer())
       .pipe($.eslint({
-        "rules": {
-          "strict": 0,
-          "quotes": false,
-          "no-trailing-spaces": false,
-          "no-extra-boolean-cast": 2
+        'rules': {
+          'strict': 0,
+          'quotes': false,
+          'no-trailing-spaces': false,
+          'no-extra-boolean-cast': 2
         }
       }))
       .pipe($.eslint.format('stylish'))

@@ -1,6 +1,7 @@
 let
   React = require('react'),
   Card = require('../components/Card.js'),
+  Jumbotron = require('../components/Jumbotron.js'),
   Home = React.createClass({
     render(){
       return (

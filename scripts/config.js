@@ -1,16 +1,10 @@
-module.exports = () => {
-  let config = {
-    defaults: { },
-    private: { }
-  };
+"use strict";
 
-  // Defaults
-  config.defaults.heightRatio = 0.55;
-
-
-  return {
-    defaults: config.defaults
-  };
+var config = {
+  defaults: {}
 };
 
-//# sourceMappingURL=config.js.map
+// Defaults
+config.defaults.heightRatio = 0.55;
+
+module.exports = config;

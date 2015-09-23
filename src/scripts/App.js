@@ -24,6 +24,7 @@ let routes = (
     <Route name="home" handler={App.views.Home}/>
     <Route name="work" handler={App.views.Work}/>
     <Route name="about" handler={App.views.About}/>
+    <DefaultRoute handler={App.views.Home}/>
   </Route>
 );
 

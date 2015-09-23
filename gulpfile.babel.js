@@ -31,7 +31,7 @@ let path = {
 path.HTML = `${path.SRC}/index.html`;
 path.STYLES = `${path.SRC}/styles`;
 path.SCRIPTS = `${path.SRC}/scripts`;
-path.ENTRY_POINT = `${path.SCRIPTS}/App.jsx`;
+path.ENTRY_POINT = `${path.SCRIPTS}/App.js`;
 
 path.TMP_HTML = `${path.TMP}/index.html`;
 path.TMP_STYLES = `${path.TMP}/styles`;
@@ -91,7 +91,7 @@ function lint(files, options) {
 }
 
 gulp.task('reactify', () => {
-  return gulp.src(`${path.SRC}/scripts/**/*.jsx`)
+  return gulp.src(`${path.SRC}/scripts/**/*.js`)
     .pipe($.react())
     .pipe($.babel())
     .pipe(gulp.dest(`${path.TMP}/scripts/`));
@@ -197,14 +197,14 @@ gulp.task('serve', ['transpile', 'styles', 'fonts'], () => {
 
   gulp.watch([
     `${path.SRC}/*.html`,
-    `${path.SRC}/scripts/**/*.jsx`,
+    `${path.SRC}/scripts/**/*.js`,
     `${path.TMP}/scripts/**/*.js`,
     `${path.SRC}/images/**/*`,
     `${path.TMP}/fonts/**/*`
   ]).on('change', reload);
 
   gulp.watch(`${path.STYLES}/**/*.scss`, ['styles']);
-  gulp.watch(`${path.SRC}/scripts/**/*.jsx`, ['transpile', reload]);
+  gulp.watch(`${path.SRC}/scripts/**/*.js`, ['transpile', reload]);
   gulp.watch(`${path.SRC}/fonts/**/*`, ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });

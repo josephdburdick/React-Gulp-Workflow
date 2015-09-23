@@ -1,7 +1,7 @@
 
 let
   App = {};
-  App.config = require('./config');
+  App.config = require('./config.js');
   App.helpers = {};
   App.components = {};
   App.views = {};
@@ -14,10 +14,10 @@ let
   DefaultRoute = Router.DefaultRoute,
   RouteHandler = Router.RouteHandler;
 
-App.components.MainContainer = require('./components/MainContainer');
-App.views.Home = require('./views/Home');
-App.views.About = require('./views/About');
-App.views.Work = require('./views/Work');
+App.components.MainContainer = require('./components/MainContainer.js');
+App.views.Home = require('./views/Home.js');
+App.views.About = require('./views/About.js');
+App.views.Work = require('./views/Work.js');
 
 let routes = (
   <Route path="/" handler={App.components.MainContainer}>

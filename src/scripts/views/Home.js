@@ -1,9 +1,10 @@
-let React = require('react');
-let Card = require('../components/Card');
-let ProportionalBlock = require('../components/ProportionalBlock');
-let Jumbotron = require('../components/Jumbotron');
+let
+  React = require('react'),
+  Card = require('../components/Card.js'),
+  ProportionalBlock = require('../components/ProportionalBlock.js'),
+  Jumbotron = require('../components/Jumbotron.js'),
 
-let Home = React.createClass({
+  Home = React.createClass({
     render(){
       return (
         <div>

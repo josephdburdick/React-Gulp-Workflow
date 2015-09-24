@@ -18,7 +18,7 @@ let PrimaryNavigation = React.createClass({
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand page-scroll" href="#page-top">Adoptive {this.props.route}</a>
+            <a className="navbar-brand page-scroll" href="#/">Adoptive {this.props.route}</a>
           </div>
 
           <div id="navbar" className="navbar-collapse collapse">

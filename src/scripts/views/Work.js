@@ -39,44 +39,6 @@ let
               </div>
             </div>
           </section>
-          <section id="services">
-            <div className="container">
-              <div className="section-title text-center">
-                <h2><span className="text-rule --above">Services</span></h2>
-              </div>
-              <div className="row">
-                <div className="col-sm-12">
-                  <figure className="figure --tint --white bg-cover" data-heightratio>
-                    <div className="figure-body">
-                      <div className="position-absolute--bottom full-width text-center">
-                        <div className="action-link"><a href="" className="btn btn-lg btn-transparent padding-left--0">See what we do <i className="glyphicon fa fa-chevron-right"></i></a></div>
-                      </div>
-                    </div>
-                  </figure>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section id="about">
-            <div className="container">
-              <div className="section-title text-center">
-                <h2><span className="text-rule --above">About Us</span></h2>
-              </div>
-              <div className="row">
-                <div className="team-carousel">
-                  <div className="col-sm-12">
-                    <div className="card card-base">
-                      <div className="card-body">
-                        <div className="project-brand">Project Brand</div>
-                        <div className="project-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</div>
-                        <div className="btn btn-lg btn-transparent action-link">See the case study <i className="glyphicon fa fa-chevron-right"></i></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
         </div>
       );
     }

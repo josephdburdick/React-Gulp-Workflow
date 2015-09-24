@@ -3,20 +3,12 @@
 // --------------------------------------------------
 
 // Base class
-.figure{
-  background-color: $figure-bg;
-}
-.figure-base{
-  height: 0;
-  padding-bottom: 45%;
-  position: relative;
-}
-.figure{
+figure, .figure{
+  background-color: transparent;
   .figure-body {
     padding: $panel-body-padding;
   }
-  &.--tint{
-    position: relative;
+  &.figure-tint{
     &:after{
       content: '';
       position: absolute;
@@ -26,11 +18,16 @@
       left: 0;
       background-color: rgba(0,0,0,.85);
     }
-    &.--white:after{
+    &.figure-tint--white:after{
       background-color: rgba(255,255,255,.85);
     }
   }
-  &.--desaturate{
+  &.figure--desaturate{
     filter: grayscale(100%);
   }
+}
+.figure-base{
+  height: 0;
+  padding-bottom: 45%;
+  position: relative;
 }

@@ -31,6 +31,7 @@ let
     componentDidMount(){
       let element = React.findDOMNode(this),
           ratio = this.props.ratio;
+
       $(window).on('resize', () => {
         $(element).each(function(){
           $(this).css({minHeight: Math.round($(this).outerWidth() * ratio )});
@@ -38,6 +39,7 @@ let
       }).trigger('resize');
     },
     render(){
+
       return (
         <div className={this.props.classes} ratio={this.props.ratio} style={this.state.styles}>
           {this.props.children}

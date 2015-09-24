@@ -31,7 +31,7 @@ nav{
     margin-bottom: 0;
   }
   &.sticky{
-    background-color: $card-bg;
+    background-color: rgba($card-bg, .9875);
     .navbar-stroke--bottom{
       border-color: transparent;
     }

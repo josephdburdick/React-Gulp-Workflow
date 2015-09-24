@@ -3,10 +3,6 @@ let
   Router = require('react-router'),
   Route = Router.Route,
   Link = Router.Link,
-          // navDefaultMargins = {
-          //   top: $(nav).css('margin-top'),
-          //   bottom: $(nav).css('margin-bottom')
-          // };
 
   PrimaryNavigation = React.createClass({
     componentDidMount(){

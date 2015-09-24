@@ -9,12 +9,12 @@ let
         <div>
           <Jumbotron>
             <h1>This is the Work page</h1>
-            <a href="#/about" className="btn-black btn-outline btn-lg">Learn more</a>
+            <a href="#/about" className="btn-white btn-outline btn-lg">Learn more</a>
           </Jumbotron>
           <section id="work">
             <div className="container">
               <div className="section-title text-center">
-                <h2><span className="text-rule --above">Work</span></h2>
+                <h2><span className="text-rule text-rule--above">Work</span></h2>
               </div>
               <div className="row row-flex row-flex-wrap case-studies">
                 <div className="col-sm-6">

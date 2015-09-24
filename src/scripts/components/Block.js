@@ -6,7 +6,6 @@ let
 
   Block = React.createClass({
     getDefaultProps(){
-      let classes = 'card card-base vertical-center';
       return {
         ratio: 0.55,
         classes: 'card card-base vertical-center'
@@ -39,7 +38,6 @@ let
       }).trigger('resize');
     },
     render(){
-
       return (
         <div className={this.props.classes} ratio={this.props.ratio} style={this.state.styles}>
           {this.props.children}

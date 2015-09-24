@@ -24,14 +24,21 @@ html, body{
 @import 'helpers/fills';
 
 /** COMPONENTS **/
+@import 'components/navigation';
 @import 'components/images';
 @import 'components/cards';
 @import 'components/figures';
 @import 'components/text-rule';
 @import 'components/buttons';
+@import 'components/jumbotron';
+section{
+  margin-bottom: 2vw;
+}
 
 /** VIEWS **/
-@import "views/home";
+
+
+
 
 
 

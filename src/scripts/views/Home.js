@@ -1,7 +1,6 @@
 let
   React = require('react'),
   Block = require('../components/Block.js'),
-  ProportionalBlock = require('../components/ProportionalBlock.js'),
   Jumbotron = require('../components/Jumbotron.js'),
   Fill = require('../helpers/Fill.js'),
   Home = React.createClass({
@@ -10,7 +9,7 @@ let
         <div>
           <Jumbotron>
             <h1>Adoptive is strategy-led experience design</h1>
-            <a href="#/about" className="btn-black btn-outline btn-lg">Learn more</a>
+            <a href="#/about" className="btn-white btn-outline btn-lg">Learn more</a>
           </Jumbotron>
           <section id="work">
             <div className="container">

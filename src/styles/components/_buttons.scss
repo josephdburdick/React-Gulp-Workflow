@@ -1,8 +1,8 @@
-//
-// Buttons
-// --------------------------------------------------
+/*
+ *
+ * Buttons
+ */
 
-//
 .btn, [class*='btn-']{ text-decoration: none !important; }
 .btn-transparent {
   @include button-variant(inherit, transparent, transparent);
@@ -12,9 +12,13 @@
   background-color: transparent !important;
   color: inherit;
   transition: all .5s;
-  border: 1px solid;
+  border: 2px solid;
 }
 
+.btn-white.btn-outline {
+  color: white;
+  border-color: white;
+}
 .btn-black.btn-outline {
   color: $brand-black;
   border-color: $brand-black;

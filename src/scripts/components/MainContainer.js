@@ -9,8 +9,6 @@ let MainContainer = React.createClass({
   render: function () {
     return (
       <div>
-
-        <PrimaryNavigation name="navbar"/>
         <div className="row">
           <div className="col-sm-12 main">
             <RouteHandler/>

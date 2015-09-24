@@ -1,0 +1,38 @@
+/*
+ *
+ * Navigation
+ */
+
+nav{
+
+}
+.navbar-default{
+  background-color: transparent;
+  border: 0;
+}
+
+.navbar-stroke--top{
+  border-top: 2px solid $gray-light;
+}
+.navbar-stroke--bottom{
+  border-bottom: 2px solid $gray-light;
+}
+
+#nav-primary{
+  width: 100%;
+  left: 0;
+  right: 0;
+  position: relative;
+  z-index: 50;
+  background-color: transparent;
+  transition: background-color .2s ease-in-out;
+  .navbar{
+    margin-bottom: 0;
+  }
+  &.sticky{
+    background-color: $card-bg;
+    .navbar-stroke--bottom{
+      border-color: transparent;
+    }
+  }
+}

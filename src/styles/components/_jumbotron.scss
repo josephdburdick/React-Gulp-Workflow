@@ -1,0 +1,19 @@
+/*
+ *
+ * Jumbotron
+ */
+
+.jumbotron{
+  background-color: $card-bg;
+  color: white;
+  padding-top: 40px;
+
+  h1,.h1{
+    font-size: 53px;
+
+    & + [class^="btn-"]{
+      display: inline-block;
+      margin-top: 20px;
+    }
+  }
+}

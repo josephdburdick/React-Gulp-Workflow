@@ -12,8 +12,7 @@ let
           navPlaceholder.style.width = navPosition.width + 'px';
           navPlaceholder.style.height = navPosition.height + 'px';
       let isAdded = false;
-
-      window.addEventListener('scroll', function() {
+      let detectSticky = function(){
         if (window.pageYOffset >= navPosition.top && !isAdded) {
           nav.classList.add('sticky');
           nav.parentNode.insertBefore(navPlaceholder, nav);
@@ -23,7 +22,9 @@ let
           nav.parentNode.removeChild(navPlaceholder);
           isAdded = false;
         }
-      });
+      };
+      window.addEventListener('scroll', detectSticky);
+      window.addEventListener('scrollstop', detectSticky);
     },
     render(){
       return (

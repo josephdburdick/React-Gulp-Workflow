@@ -1,0 +1,21 @@
+/*
+ *
+ * Carousels
+ */
+
+.carousel-overflow{
+  overflow: hidden;
+  .carousel-inner{
+    display: flex;
+    overflow: hidden;
+    overflow-x: auto;
+  }
+}
+.carousel-inner{
+  display: flex;
+  .card{
+    position: relative;
+    max-width: 405px;
+    margin: 0 5px 10px;
+  }
+}

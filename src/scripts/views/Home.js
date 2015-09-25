@@ -3,6 +3,8 @@ let
   Block = require('../components/Block.js'),
   Jumbotron = require('../components/Jumbotron.js'),
   Fill = require('../helpers/Fill.js'),
+  Dock = require('../components/Dock.js'),
+  Overflow = require('../components/Overflow.js'),
   Home = React.createClass({
     render(){
       return (
@@ -62,20 +64,184 @@ let
               <div className="section-title text-center">
                 <h2><span className="text-rule text-rule--above">About Us</span></h2>
               </div>
-              <div className="row">
-                <div className="team-carousel">
-                  <div className="col-sm-12">
-                    <div className="card card-base">
-                      <div className="card-body">
-                        <div className="project-brand">Project Brand</div>
-                        <div className="project-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</div>
-                        <div className="btn btn-lg btn-transparent action-link">See the case study <i className="glyphicon fa fa-chevron-right"></i></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
+
+            <Overflow className="carousel carousel-overflow" target=".col-xs-4">
+              <div className="carousel-inner">
+                <div>
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">  Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+                </div>
+                <div>
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">  Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+                </div>
+                <div>
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">  Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+                </div>
+                <div>
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">  Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+                </div>
+                <div>
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">  Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+                </div>
+                <div>
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">  Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+                </div>
+                <div>
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">  Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+                </div>
+                <div>
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">  Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+                </div>
+                <div>
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">  Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+
+                  <Block ratio="1">
+                    <div className="card-body">
+                      <div className="project-title">Member Name</div>
+                      <Dock bottom className="text-right">
+                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      </Dock>
+                    </div>
+                  </Block>
+                </div>
+
+              </div>
+            </Overflow>
           </section>
         </div>
       );

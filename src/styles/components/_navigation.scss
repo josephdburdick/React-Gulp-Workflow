@@ -22,7 +22,6 @@ nav{
 #nav-primary{
   width: 100%;
   left: 0;
-  right: 0;
   position: relative;
   z-index: 50;
   background-color: transparent;
@@ -31,6 +30,11 @@ nav{
     margin-bottom: 0;
   }
   &.sticky{
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 200;
     background-color: rgba($card-bg, .9875);
     .navbar-stroke--bottom{
       border-color: transparent;

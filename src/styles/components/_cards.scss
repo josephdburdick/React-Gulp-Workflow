@@ -5,7 +5,10 @@
 
 // Base class
 .project-title{
-  font-size: 2vw
+  font-size: 2vw;
+  @media(max-width: $screen-sm){
+    font-size: 4vw;
+  }
 }
 .card {
   margin-bottom: $line-height-computed;

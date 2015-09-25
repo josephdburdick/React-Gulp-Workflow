@@ -13,17 +13,17 @@ let
           navPlaceholder.style.height = navPosition.height + 'px';
       let isAdded = false;
 
-          window.addEventListener('scroll', function() {
-            if (window.pageYOffset >= navPosition.top && !isAdded) {
-              nav.classList.add('sticky');
-              nav.parentNode.insertBefore(navPlaceholder, nav);
-              isAdded = true;
-            } else if (window.pageYOffset < navPosition.top && isAdded) {
-              nav.classList.remove('sticky');
-              nav.parentNode.removeChild(navPlaceholder);
-              isAdded = false;
-            }
-          });
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset >= navPosition.top && !isAdded) {
+          nav.classList.add('sticky');
+          nav.parentNode.insertBefore(navPlaceholder, nav);
+          isAdded = true;
+        } else if (window.pageYOffset < navPosition.top && isAdded) {
+          nav.classList.remove('sticky');
+          nav.parentNode.removeChild(navPlaceholder);
+          isAdded = false;
+        }
+      });
     },
     render(){
       return (
@@ -32,10 +32,10 @@ let
             <div className="container">
               <div className="navbar-header page-scroll">
                 <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span className="sr-only">Toggle navigation</span>
-                    <span className="icon-bar"></span>
-                    <span className="icon-bar"></span>
-                    <span className="icon-bar"></span>
+                  <span className="sr-only">Toggle navigation</span>
+                  <span className="icon-bar"></span>
+                  <span className="icon-bar"></span>
+                  <span className="icon-bar"></span>
                 </button>
                 <a className="navbar-brand page-scroll" href="#/">Adoptive {this.props.route}</a>
               </div>

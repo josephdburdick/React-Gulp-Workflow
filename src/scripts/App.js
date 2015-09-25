@@ -18,16 +18,22 @@ App.components.MainContainer = require('./components/MainContainer.js');
 App.views.Home = require('./views/Home.js');
 App.views.About = require('./views/About.js');
 App.views.Work = require('./views/Work.js');
+App.views.NoMatch = require('./views/NoMatch.js');
 
 let routes = (
-  <Route path="/" handler={App.components.MainContainer}>
-    <Route name="home" handler={App.views.Home}/>
-    <Route name="work" handler={App.views.Work}/>
-    <Route name="about" handler={App.views.About}/>
-    <DefaultRoute handler={App.views.Home}/>
+  <Route path="/" component={App.components.MainContainer}>
+    <DefaultRoute component={App.views.Home}/>
+    <Route path="home" component={App.views.Home}/>
+    <Route path="work" component={App.views.Work}/>
+    <Route path="about" component={App.views.About}/>
+    <Route path="*" component={App.views.NoMatch}/>
   </Route>
 );
 
-Router.run(routes, Router.HashLocation, function (Handler) {
-  React.render(<Handler/>, document.querySelector('#yield'));
-});
+let createBrowserHistory = require('history/lib/createBrowserHistory');
+let history = createBrowserHistory();
+React.render(<Router history={history}>{routes}</Router>, document.querySelector('#yield'));
+
+// Router.run(routes, Router.HashLocation, function (Handler) {
+//   React.render(<Handler/>, document.querySelector('#yield'));
+// });

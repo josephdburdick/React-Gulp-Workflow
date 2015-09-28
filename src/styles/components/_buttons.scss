@@ -6,6 +6,7 @@
 .btn, [class*='btn-']{ text-decoration: none !important; }
 .btn-transparent {
   @include button-variant(inherit, transparent, transparent);
+  box-shadow: none !important;
 }
 
 .btn-outline {

@@ -24,7 +24,7 @@ let
         }
       };
       window.addEventListener('scroll', detectSticky);
-      window.addEventListener('scrollstop', detectSticky);
+      //window.addEventListener('scrollstop', detectSticky;
     },
     render(){
       return (

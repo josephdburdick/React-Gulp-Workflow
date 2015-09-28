@@ -6,7 +6,9 @@ $icon-font-path: '../fonts/';
 // endbower
 
 html, body{
-  height: 100%;
+  // height: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
 .browserupgrade {
   margin: 0.2em 0;
@@ -17,9 +19,7 @@ html, body{
 
 /** HELPERS **/
 @import 'helpers/bootstrap-flex-grid';
-.no-border-radius {
-  border-radius: 0;
-}
+.no-border-radius { border-radius: 0; }
 @import 'helpers/positioning';
 @import 'helpers/fills';
 
@@ -36,23 +36,32 @@ section{
   margin-bottom: 2vw;
 }
 #yield{
-  position: relative;
-  top:0;
-  left:0;
-  width: 100vw;
-  // height: 100vh;
-  // overflow: hidden;
-  // overflow-y: auto;
+  overflow: hidden;
 }
-
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
 /** VIEWS **/
 
 .next-page{
+  margin-top: 4vw;
+  margin-bottom: -10vw;
   padding: 2vw;
   box-shadow: 0 0 5px black;
   border: 2px solid #ccc;
   height: 20vw;
-  margin-bottom: -10vw;
+}
+.footer-main{
+  background: $card-bg;
+  padding: 48px 0;
+  .footer-content{
+  }
+  .footer-heading{
+    font-size: 24px;
+    color: white;
+    font-weight: bolder;
+  }
 }
 
 

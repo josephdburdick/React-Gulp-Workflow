@@ -32,6 +32,10 @@ html, body{
 @import 'components/text-rule';
 @import 'components/buttons';
 @import 'components/jumbotron';
+
+/** VIEWS **/
+@import 'views/about';
+
 section{
   margin-bottom: 2vw;
 }
@@ -56,11 +60,20 @@ section{
   background: $card-bg;
   padding: 48px 0;
   .footer-content{
+    .btn-cta{
+
+    }
   }
   .footer-heading{
     font-size: 24px;
     color: white;
     font-weight: bolder;
+  }
+}
+.white-angle-bottom{
+  &:after{
+    content: '';
+
   }
 }
 

@@ -68,173 +68,155 @@ let
 
             <Overflow className="carousel carousel-overflow" target=".col-xs-4">
               <div className="carousel-inner">
-                <div>
+                <div className="carousel-item">
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">  Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
 
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
                 </div>
-                <div>
+                <div className="carousel-item">
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">  Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
 
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
                 </div>
-                <div>
+                <div className="carousel-item">
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">  Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
 
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
                 </div>
-                <div>
+                <div className="carousel-item">
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">  Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
 
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
                 </div>
-                <div>
+                <div className="carousel-item">
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">  Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
 
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
                 </div>
-                <div>
+                <div className="carousel-item">
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">  Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
 
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
                 </div>
-                <div>
+                <div className="carousel-item">
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">  Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
 
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
                 </div>
-                <div>
+                <div className="carousel-item">
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">  Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
 
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
                 </div>
-                <div>
+                <div className="carousel-item">
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">  Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>
 
                   <Block ratio="1">
                     <div className="card-body">
-                      <div className="project-title">Member Name</div>
-                      <Dock bottom className="text-right">
-                        <div className="action-link"><a href="#/about" className="btn btn-lg btn-transparent padding-left--0">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                      <Dock bottom>
+                        <div className="action-link text-right"><a href="#/about" className="btn btn-lg btn-transparent">Meet Team Member <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </Dock>
                     </div>
                   </Block>

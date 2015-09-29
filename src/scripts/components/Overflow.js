@@ -20,16 +20,31 @@ let
         }
       };
     },
-    // componentWillMount(){
-    //   if (!!this.state.styles.width){
-    //     this.state.styles.width = 0;
-    //   }
-    // },
     componentDidMount(){
-      // debugger;
-      let element = this.getDOMNode();
-      let childrenWidth = '1500px';
-      $(element).width(childrenWidth);
+      let carousel = $(this.getDOMNode()),
+          carouselInner = carousel.find('.carousel-inner'),
+          children = carouselInner.find('.carousel-item'),
+          initialWidth = 0,
+          newWidth = 0;
+
+      let getChildrenWidth = () => {
+        newWidth = 0;
+        children.each((i, child) => {
+          newWidth += $(child).outerWidth(true);
+        });
+        return newWidth;
+      };
+      initialWidth = getChildrenWidth(children);
+      $(carouselInner).width(initialWidth);
+
+
+      $(window).on('resize', () => {
+        newWidth = getChildrenWidth();
+        console.log(newWidth);
+        // if (newWidth !== initialWidth){
+        //   $(carouselInner).width(newWidth);
+        // }
+      }).trigger('resize');
     },
     render(){
       return (

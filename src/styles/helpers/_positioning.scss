@@ -4,7 +4,7 @@
  */
 
 $units: px, rem, vh, vw;
-$sizes: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 65, 70, 75, 80, 85, 90, 95, 100;
+$sizes: 0, 2, 3, 4, 5, 6, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 65, 70, 75, 80, 85, 90, 95, 100;
 $positions: relative, absolute, fixed, sticky;
 $directions: top, left, bottom, right;
 
@@ -24,19 +24,19 @@ $directions: top, left, bottom, right;
 		@each $unit in $units{
 			@each $size in $sizes{
 				.padding-#{$direction}--#{$size}#{$unit}{
-					padding-#{$direction}: #{$size}#{$unit};
+					padding-#{$direction}: #{$size}#{$unit} !important;
 				}
 				.margin-#{$direction}--#{$size}#{$unit}{
-					margin-#{$direction}: #{$size}#{$unit};
+					margin-#{$direction}: #{$size}#{$unit} !important;
 				}
 				.margin-#{$direction}--minus-#{$size}#{$unit}{
-					margin-#{$direction}: -#{$size}#{$unit};
+					margin-#{$direction}: -#{$size}#{$unit} !important;
 				}
 				.#{$direction}--#{$size}#{$unit}{
-					#{$direction}: #{$size}#{$unit};
+					#{$direction}: #{$size}#{$unit} !important;
 				}
 				.#{$direction}--minus-#{$size}#{$unit}{
-					#{$direction}: -#{$size}#{$unit};
+					#{$direction}: -#{$size}#{$unit} !important;
 				}
 			}
 		}

@@ -50,7 +50,7 @@ let MainContainer = React.createClass({
                 </div>
               </div>
               <div className="footer-content text-center col-xs-11 col-sm-5 col-centered">
-                <a href="#/contact" className="btn-white btn-outline btn-lg">Get in touch</a>
+                <a href="#/contact" className="btn-white btn-outline btn-lg btn-cta">Get in touch</a>
               </div>
             </div>
             <div className="row">

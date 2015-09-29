@@ -6,16 +6,26 @@
 .carousel-overflow{
   overflow: hidden;
   .carousel-inner{
-    display: flex;
+    // display: flex;
     overflow: hidden;
     overflow-x: auto;
   }
 }
+.carousel{
+  .carousel-inner{
+    overflow: hidden;
+    overflow-x: auto;
+  }
+  .carousel-item{
+    position: relative;
+    float: left;
+  }
+}
 .carousel-inner{
-  display: flex;
+  // display: flex;
   .card{
     position: relative;
-    max-width: 405px;
+    // max-width: 405px;
     margin: 0 5px 10px;
   }
 }

@@ -7,9 +7,11 @@
 .btn-transparent {
   @include button-variant(inherit, transparent, transparent);
   box-shadow: none !important;
+  display: inline-block;
 }
 
 .btn-outline {
+  display: inline-block;
   background-color: transparent !important;
   color: inherit;
   transition: all .5s;

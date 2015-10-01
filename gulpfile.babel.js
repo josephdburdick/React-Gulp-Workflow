@@ -124,7 +124,7 @@ gulp.task('html', ['transpile', 'styles'], () => {
   return gulp.src(`${path.SRC}/*.html`)
     .pipe($.plumber())
     .pipe(assets)
-    .pipe($.if('*.js', $.uglify()))
+    // .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.minifyCss({compatibility: '*'})))
     .pipe(assets.restore())
     .pipe($.useref())
@@ -248,7 +248,7 @@ gulp.task('deploy', () => {
     .pipe($.ghPages('git@github.com:josephdburdick/adoptive-2015'));
 });
 
-gulp.task('build', ['lint', 'copyTranspiledJStoDist', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['lint', 'copyTranspiledJStoDist', 'html', 'images', 'fonts', 'extras'], () => { 
   return gulp.src(`${path.DEST}/**/*`).pipe($.size({title: 'build', gzip: true}));
 });
 

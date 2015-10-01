@@ -10,49 +10,47 @@ let MainContainer = React.createClass({
   // <RouteHandler/> specifies the destination in the DOM where "pages" content is rendered
   render: function () {
     let routerInstance = this.context.router,
-    availableRouteNames = _.allKeys(this.context.router.namedRoutes);
+    availableRouteNames = _.allKeys(this.context.router.namedRoutes),
+    availableRoutesWithValue = [],
+    activeRouteIndex = 0,
+    nextRouteName = 'not-found';
 
-    let availableRoutesWithValue = _.map(availableRouteNames, function(routeName, index) {
-      return {name: routeName, index: index};
-    });
-
-    // or change map to each and filter during previous step
-    availableRoutesWithValue = _.reject(availableRoutesWithValue, function(routeName) {
-      return routeName === "not-found";
-    });
+    // ignore the not-found route ; not valid
+    _.each(availableRouteNames, (routeNameValue, indexValue) =>
+      {if(routeNameValue !== "not-found")
+        availableRoutesWithValue.push({name: routeNameValue, index: indexValue});
+      });
 
     let maxIndex = availableRoutesWithValue.length -1;
 
+    if (maxIndex > -1)
+    {
+      let activeRoute = routerInstance.getCurrentPath().split('/')[1];
+      if (activeRoute === "") {
+        // change to synonym : home <=> root/empty string
+        activeRoute = "home";
+      }
+
+      activeRouteIndex = _.filter(availableRoutesWithValue, availableRoute => availableRoute.name === activeRoute);
+
+      let nextRouteObject = _.filter(availableRoutesWithValue, availableRoute => (activeRouteIndex[0].index === maxIndex?availableRoute.index === 0:availableRoute.index === activeRouteIndex[0].index + 1));
+
+      if (nextRouteObject.length > 0)
+      {
+        nextRouteName = nextRouteObject[0].name;
+      }
+    }
+
     $(function($) {
       let $yield = $('#yield');
+
       window.onscroll = function() {
         let thisScrollTop = Math.round($(this).scrollTop()),
         thisInnerHeight = Math.round($(this).innerHeight());
 
         if(thisScrollTop + thisInnerHeight + 1 >= $yield.outerHeight()) {
-          console.log("Reached end of page.");
-
-          let activeRoute = routerInstance.getCurrentPath().split('/')[1];
-          if (activeRoute === "") {
-            // change to synonym : home <=> root/empty string
-            activeRoute = "home";
-          }
-
-          let activeRouteIndex = _.filter(availableRoutesWithValue, function(availableRoute) {
-            return availableRoute.name === activeRoute});
-          // console.log("Current Route is " + activeRouteIndex[0].name);
-
-          let nextRouteName = _.filter(availableRoutesWithValue, function (availableRoute) {
-            if (activeRouteIndex[0].index === maxIndex)
-            {
-              return availableRoute.index === 0;
-            }
-            else
-            {
-              return availableRoute.index === activeRouteIndex[0].index + 1;
-            }
-          });
-          routerInstance.transitionTo('/' + nextRouteName[0].name);
+          // console.log("Reached end of page.");
+          routerInstance.transitionTo('/' + nextRouteName);
         }
       };
     });

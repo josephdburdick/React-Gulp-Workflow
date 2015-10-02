@@ -7,10 +7,15 @@ import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
 
-let
-  source = require('vinyl-source-stream'),
-  browserify = require('browserify'),
-  buffer = require('vinyl-buffer');
+let source = require('vinyl-source-stream');
+let browserify = require('browserify');
+let buffer = require('vinyl-buffer');
+
+let gutil = require('gulp-util');
+let reactify = require('reactify');
+let babelify = require('babelify');
+let watchify = require('watchify');
+let notify = require('gulp-notify');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -82,32 +87,81 @@ function lint(files, options) {
   };
 }
 
-gulp.task('reactify', () => {
-  return gulp.src(`${path.SRC}/scripts/**/*.js`)
-    .pipe($.react())
-    .pipe($.babel())
-    .pipe(gulp.dest(`${path.TMP}/scripts/`));
+// gulp.task('reactify', () => {
+//   return gulp.src(`${path.SRC}/scripts/**/*.js`)
+//     // .pipe($.react())
+//     .pipe($.babel())
+//     .pipe(gulp.dest(`${path.TMP}/scripts/`));
+// });
+//
+// gulp.task('transpile', ['reactify'], () => { //['templates']
+//   return browserify(`${path.TMP}/scripts/App.js`, {debug: true})
+//       .bundle()
+//       .pipe($.plumber())
+//       .pipe(source('App.js')) //App.js
+//       .pipe(buffer())
+//       .pipe($.eslint({
+//         'rules': {
+//           'strict': 0,
+//           'quotes': false,
+//           'no-trailing-spaces': false,
+//           'no-extra-boolean-cast': 2
+//         }
+//       }))
+//       .pipe($.eslint.format('stylish'))
+//       .pipe($.sourcemaps.init()) //{loadMaps: true}
+//       .pipe($.if(isProd(), $.uglify()))
+//       .pipe($.sourcemaps.write('./'))
+//       .pipe(gulp.dest(`${path.TMP}/scripts/`));
+// });
+
+function handleErrors() {
+  var args = Array.prototype.slice.call(arguments);
+  notify.onError({
+    title: 'Compile Error',
+    message: '<%= error.message %>'
+  }).apply(this, args);
+  this.emit('end'); // Keep gulp from hanging on this task
+}
+
+function buildScript(file, watch) {
+
+  let props = {
+    entries: [`${path.SRC}/scripts/` + file], //'.' +
+    debug : true,
+    transform:  [babelify, reactify]
+  };
+
+  // watchify() if watch requested, otherwise run browserify() once
+  let bundler = watch ? watchify(browserify(props)) : browserify(props);
+
+  function rebundle() {
+    let stream = bundler.bundle();
+    return stream
+      .on('error', handleErrors)
+      .pipe(source(file))
+      .pipe(gulp.dest(`${path.TMP}/scripts`))
+      .pipe(gulp.dest(`${path.DEST}/scripts`));
+  }
+
+  // listen for an update and run rebundle
+  bundler.on('update', function() {
+    rebundle();
+    gutil.log('Rebundle...');
+  });
+
+  // run it once the first time buildScript is called
+  return rebundle();
+}
+
+// run once
+gulp.task('scripts', function() {
+  return buildScript(`App.js`, false);
 });
 
-gulp.task('transpile', ['reactify'], () => { //['templates']
-  return browserify(`${path.TMP}/scripts/App.js`, {debug: true})
-      .bundle()
-      .pipe($.plumber())
-      .pipe(source('App.js')) //App.js
-      .pipe(buffer())
-      .pipe($.eslint({
-        'rules': {
-          'strict': 0,
-          'quotes': false,
-          'no-trailing-spaces': false,
-          'no-extra-boolean-cast': 2
-        }
-      }))
-      .pipe($.eslint.format('stylish'))
-      .pipe($.sourcemaps.init()) //{loadMaps: true}
-      .pipe($.if(isProd(), $.uglify()))
-      .pipe($.sourcemaps.write('./'))
-      .pipe(gulp.dest(`${path.TMP}/scripts/`));
+// run 'scripts' task first, then watch for future changes
+gulp.task('watchScripts', ['scripts'], function() {
+  return buildScript(`App.js`, true);
 });
 
 gulp.task('copyTranspiledJStoDist', ['lint'], () => {
@@ -115,10 +169,10 @@ gulp.task('copyTranspiledJStoDist', ['lint'], () => {
     .pipe(gulp.dest(`${path.DEST}/scripts/`));
 });
 
-gulp.task('lint', ['transpile'], lint(`${path.TMP}/scripts/App.js`));
+gulp.task('lint', ['watchScripts'], lint(`${path.TMP}/scripts/App.js`));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
-gulp.task('html', ['transpile', 'styles'], () => {
+gulp.task('html', ['watchScripts', 'styles'], () => {
   const assets = $.useref.assets({searchPath: [path.TMP, path.SRC, '.']});
 
   return gulp.src(`${path.SRC}/*.html`)
@@ -174,7 +228,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, [path.TMP, path.DEST]));
 
-gulp.task('serve', ['transpile', 'styles', 'fonts'], () => {
+gulp.task('serve', ['watchScripts', 'styles', 'fonts'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -188,14 +242,14 @@ gulp.task('serve', ['transpile', 'styles', 'fonts'], () => {
 
   gulp.watch([
     `${path.SRC}/*.html`,
-    `${path.SRC}/scripts/**/*.js`,
-    `${path.TMP}/scripts/**/*.js`,
+    // `${path.SRC}/scripts/**/*.js`,
+    // `${path.TMP}/scripts/**/*.js`,
     `${path.SRC}/images/**/*`,
     `${path.TMP}/fonts/**/*`
   ]).on('change', reload);
 
   gulp.watch(`${path.STYLES}/**/*.scss`, ['styles']);
-  gulp.watch(`${path.SRC}/scripts/**/*.js`, ['transpile', reload]);
+  gulp.watch(`${path.SRC}/scripts/**/*.js`, ['watchScripts', reload]);
   gulp.watch(`${path.SRC}/fonts/**/*`, ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
@@ -248,7 +302,7 @@ gulp.task('deploy', () => {
     .pipe($.ghPages('git@github.com:josephdburdick/adoptive-2015'));
 });
 
-gulp.task('build', ['lint', 'copyTranspiledJStoDist', 'html', 'images', 'fonts', 'extras'], () => { 
+gulp.task('build', ['lint', 'copyTranspiledJStoDist', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src(`${path.DEST}/**/*`).pipe($.size({title: 'build', gzip: true}));
 });
 

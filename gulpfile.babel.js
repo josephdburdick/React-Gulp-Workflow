@@ -87,34 +87,6 @@ function lint(files, options) {
   };
 }
 
-// gulp.task('reactify', () => {
-//   return gulp.src(`${path.SRC}/scripts/**/*.js`)
-//     // .pipe($.react())
-//     .pipe($.babel())
-//     .pipe(gulp.dest(`${path.TMP}/scripts/`));
-// });
-//
-// gulp.task('transpile', ['reactify'], () => { //['templates']
-//   return browserify(`${path.TMP}/scripts/App.js`, {debug: true})
-//       .bundle()
-//       .pipe($.plumber())
-//       .pipe(source('App.js')) //App.js
-//       .pipe(buffer())
-//       .pipe($.eslint({
-//         'rules': {
-//           'strict': 0,
-//           'quotes': false,
-//           'no-trailing-spaces': false,
-//           'no-extra-boolean-cast': 2
-//         }
-//       }))
-//       .pipe($.eslint.format('stylish'))
-//       .pipe($.sourcemaps.init()) //{loadMaps: true}
-//       .pipe($.if(isProd(), $.uglify()))
-//       .pipe($.sourcemaps.write('./'))
-//       .pipe(gulp.dest(`${path.TMP}/scripts/`));
-// });
-
 function handleErrors() {
   var args = Array.prototype.slice.call(arguments);
   notify.onError({
@@ -145,7 +117,7 @@ function buildScript(file, watch) {
   }
 
   // listen for an update and run rebundle
-  bundler.on('update', function() {
+  bundler.on('update', () => {
     rebundle();
     gutil.log('Rebundle...');
   });
@@ -155,24 +127,25 @@ function buildScript(file, watch) {
 }
 
 // run once
-gulp.task('scripts', function() {
+gulp.task('scripts', () => {
   return buildScript(`App.js`, false);
 });
 
 // run 'scripts' task first, then watch for future changes
-gulp.task('watchScripts', ['scripts'], function() {
+gulp.task('watchScripts', ['scripts'], () =>{
   return buildScript(`App.js`, true);
 });
 
-gulp.task('copyTranspiledJStoDist', ['lint'], () => {
-  return gulp.src(`${path.TMP}/scripts/*.js`)
+gulp.task('minifyJS', ['scripts'], () =>{
+  return gulp.src(`${path.DEST}/scripts/App.js`)
+    .pipe($.uglify())
     .pipe(gulp.dest(`${path.DEST}/scripts/`));
 });
 
-gulp.task('lint', ['watchScripts'], lint(`${path.TMP}/scripts/App.js`));
+gulp.task('lint', ['scripts'], lint(`${path.TMP}/scripts/App.js`));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
-gulp.task('html', ['watchScripts', 'styles'], () => {
+gulp.task('html', ['styles'], () => {
   const assets = $.useref.assets({searchPath: [path.TMP, path.SRC, '.']});
 
   return gulp.src(`${path.SRC}/*.html`)
@@ -242,8 +215,6 @@ gulp.task('serve', ['watchScripts', 'styles', 'fonts'], () => {
 
   gulp.watch([
     `${path.SRC}/*.html`,
-    // `${path.SRC}/scripts/**/*.js`,
-    // `${path.TMP}/scripts/**/*.js`,
     `${path.SRC}/images/**/*`,
     `${path.TMP}/fonts/**/*`
   ]).on('change', reload);
@@ -302,7 +273,7 @@ gulp.task('deploy', () => {
     .pipe($.ghPages('git@github.com:josephdburdick/adoptive-2015'));
 });
 
-gulp.task('build', ['lint', 'copyTranspiledJStoDist', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['html', 'images', 'fonts', 'extras', 'minifyJS'], () => {
   return gulp.src(`${path.DEST}/**/*`).pipe($.size({title: 'build', gzip: true}));
 });
 

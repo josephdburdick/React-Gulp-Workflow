@@ -39,7 +39,7 @@ let MainContainer = React.createClass({
           }
 
           let activeRouteIndex = _.filter(availableRoutesWithValue, function(availableRoute) {
-            return availableRoute.name === activeRoute});
+            return availableRoute.name === activeRoute; });
           // console.log("Current Route is " + activeRouteIndex[0].name);
 
           let nextRouteName = _.filter(availableRoutesWithValue, function (availableRoute) {

@@ -52,5 +52,8 @@
         "single"
       ]
     }
+  },
+  "dependencies": {
+    "react-drive-in": "^1.6.0"
   }
 }

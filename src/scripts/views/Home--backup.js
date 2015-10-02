@@ -5,21 +5,18 @@ let
   Fill = require('../helpers/Fill.js'),
   Dock = require('../components/Dock.js'),
   Overflow = require('../components/Overflow.js'),
-  FillParentVideo = require('../components/FillParentVideo.js'),
   Home = React.createClass({
     render(){
       return (
         <div>
           <Jumbotron>
-            <FillParentVideo>HELLO WORLD</FillParentVideo>
-
             <h1>Adoptive is strategy-led experience design</h1>
             <a href="#/about" className="btn-white btn-outline btn-lg">Learn more</a>
           </Jumbotron>
           <section id="work">
             <div className="container">
               <div className="section-title text-center">
-                <h2><span className="text-rule text-rule--above">Work</span></h2>
+                <h2><span className="text-rule text-rule--above">Featured Work</span></h2>
               </div>
               <div className="row row-flex row-flex-wrap case-studies">
                 <div className="col-sm-6">

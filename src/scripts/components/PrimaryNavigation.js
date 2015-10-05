@@ -32,7 +32,7 @@ let
           <nav className="navbar navbar-default">
             <div className="container">
               <div className="navbar-header page-scroll">
-                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#nav-primary--navbar-collapse">
                   <span className="sr-only">Toggle navigation</span>
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
@@ -41,7 +41,7 @@ let
                 <a className="navbar-brand page-scroll" href="#/">Adoptive {this.props.route}</a>
               </div>
 
-              <div id="navbar" className="navbar-collapse collapse navbar-stroke--bottom">
+              <div id="nav-primary--navbar-collapse" className="navbar-collapse collapse navbar-stroke--bottom">
                 <ul className="nav navbar-nav">
                   <li><a href="#/work">Work</a></li>
                   <li><a href="#/services">Services</a></li>
@@ -49,7 +49,7 @@ let
                   <li><a href="#/thoughts">Thoughts</a></li>
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
-                  <li><a href="#">Search</a></li>
+                  <li><a href="#" className="btn btn-default">Get in Touch</a></li>
                 </ul>
               </div>
             </div>

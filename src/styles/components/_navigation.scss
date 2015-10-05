@@ -6,6 +6,12 @@
 nav{
 
 }
+@media (min-width: 768px){
+  .navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
 .navbar-default{
   background-color: transparent;
   border: 0;

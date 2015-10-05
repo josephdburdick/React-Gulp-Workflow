@@ -8,7 +8,7 @@ let
     getDefaultProps(){
       return {
         target: 'Block',
-        classes: 'carousel'
+        classes: 'carousel carousel-overflow'
         // position: 'bottom'
       };
     },

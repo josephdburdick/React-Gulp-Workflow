@@ -1,8 +1,9 @@
 let
-  React = require('react'),
-  $ = require('jquery'),
-  classNames = require('classnames'),
+  // React = require('react'),
+  // $ = require('jquery'),
+  // classNames = require('classnames'),
   DriveIn = require('react-drive-in'),
+  // mountNode = $('body'),
 
   FillParentVideo = React.createClass({
     getDefaultProps(){
@@ -12,18 +13,18 @@ let
 
     },
     componentWillMount(){
-
+      // debugger;
     },
     componentDidMount(){
 
     },
     render(){
-      return (
-        <DriveIn
-        show="http://raw.githubusercontent.com/ronik-design/react-drive-in/master/example/glacier.mp4"
-        poster="http://raw.githubusercontent.com/ronik-design/react-drive-in/master/example/glacier.jpg"
-        />
-      );
+      // return (
+      //   // <DriveIn
+      //   // show="http://raw.githubusercontent.com/ronik-design/react-drive-in/master/example/glacier.mp4"
+      //   // poster="http://raw.githubusercontent.com/ronik-design/react-drive-in/master/example/glacier.jpg"
+      //   // />, mountNode
+      // );
     }
   });
 

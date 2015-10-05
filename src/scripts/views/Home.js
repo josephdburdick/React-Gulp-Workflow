@@ -8,10 +8,11 @@ let
   FillParentVideo = require('../components/FillParentVideo.js'),
   Home = React.createClass({
     render(){
+      // debugger;
       return (
         <div>
           <Jumbotron>
-            <FillParentVideo>HELLO WORLD</FillParentVideo>
+
 
             <h1>Adoptive is strategy-led experience design</h1>
             <a href="#/about" className="btn-white btn-outline btn-lg">Learn more</a>

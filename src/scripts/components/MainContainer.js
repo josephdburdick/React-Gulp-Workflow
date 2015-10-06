@@ -43,7 +43,7 @@ let MainContainer = React.createClass({
 
     $(function($) {
       let $yield = $('#yield');
-
+      window.scrollTo(0, 0);
       window.onscroll = function() {
         let thisScrollTop = Math.round($(this).scrollTop()),
             thisInnerHeight = Math.round($(this).innerHeight()),
@@ -63,33 +63,33 @@ return (
     <div className="main">
       <RouteHandler/>
     </div>
-  <footer className="footer-main" id="footer-main">
-    <div className="container">
-      <div className="row">
-        <div className="footer-content text-center col-xs-11 col-sm-5 col-centered">
-          <div className="footer-heading">
-            <p>
-            We invest deeply in the work we do,
-            adopting our clients' challenges as our own – 
-            when they succeed, so do we.
-            </p>
+    <footer className="footer-main" id="footer-main">
+      <div className="container">
+        <div className="row">
+          <div className="footer-content text-center col-xs-11 col-sm-5 col-centered">
+            <div className="footer-heading">
+              <p>
+              We invest deeply in the work we do,
+              adopting our clients' challenges as our own – 
+              when they succeed, so do we.
+              </p>
+            </div>
+          </div>
+          <div className="footer-content text-center col-xs-11 col-sm-5 col-centered">
+            <a href="#/contact" className="btn-white btn-outline btn-lg btn-cta">Get in touch</a>
           </div>
         </div>
-        <div className="footer-content text-center col-xs-11 col-sm-5 col-centered">
-          <a href="#/contact" className="btn-white btn-outline btn-lg btn-cta">Get in touch</a>
+        <div className="row">
+          <div className="col-xs-6 text-left">
+            <a href="#">Careers</a>
+            <a href="#">Privacy / Legal</a>
+          </div>
+          <div className="col-xs-6 text-right">
+            &copy; Adoptive 2015
+          </div>
         </div>
       </div>
-      <div className="row">
-        <div className="col-xs-6 text-left">
-          <a href="#">Careers</a>
-          <a href="#">Privacy / Legal</a>
-        </div>
-        <div className="col-xs-6 text-right">
-          &copy; Adoptive 2015
-        </div>
-      </div>
-    </div>
-  </footer>
+    </footer>
     <div className="container">
       <div className="col-sm-12 next-page text-center">
       Loading

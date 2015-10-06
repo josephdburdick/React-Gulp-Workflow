@@ -23,15 +23,15 @@ App.views.Thoughts = require('./views/Thoughts.js');
 
 let routes = (
   <Route path="/" handler={App.components.MainContainer}>
-    <Route name="home" handler={App.views.Home}/>
-    <Route name="work" handler={App.views.Work}/>
-    <Route name="services" handler={App.views.Services}/>
-    <Route name="about" handler={App.views.About}/>
-    <Route name="thoughts" handler={App.views.Thoughts}/>
+    <Route name="home" handler={App.views.Home} />
+    <Route name="work" handler={App.views.Work} />
+    <Route name="services" handler={App.views.Services} />
+    <Route name="about" handler={App.views.About} />
+    <Route name="thoughts" handler={App.views.Thoughts} />
     <DefaultRoute name="not-found" handler={App.views.Home}/>
   </Route>
 );
 
-Router.run(routes, Router.HashLocation, function (Handler) {
+Router.run(routes, Router.HistoryLocation, function (Handler) {
   React.render(<Handler/>, document.querySelector('#yield'));
 });

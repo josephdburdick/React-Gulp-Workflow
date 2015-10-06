@@ -1,5 +1,5 @@
 let config = {
-  defaults: { },
+  defaults: { }
 };
 
 // Defaults

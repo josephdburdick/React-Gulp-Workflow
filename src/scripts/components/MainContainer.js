@@ -42,8 +42,8 @@ let MainContainer = React.createClass({
     }
 
     $(function($) {
-      let $yield = $('#yield');
-      window.scrollTo(0, 0);
+      let $appContainer = $('#app');
+      // window.scrollTo(0, 0);
       window.onscroll = function() {
         let thisScrollTop = Math.round($(this).scrollTop()),
             thisInnerHeight = Math.round($(this).innerHeight()),
@@ -52,7 +52,7 @@ let MainContainer = React.createClass({
             scrollPercent = 1 * $(containeR).scrollTop() / ($(containeD).height() - $(containeR).height());
 
             console.log(scrollPercent);
-        if(thisScrollTop + thisInnerHeight + 1 >= $yield.outerHeight()) {
+        if(thisScrollTop + thisInnerHeight + 1 >= $appContainer.outerHeight()) {
           // console.log("Reached end of page.");
           routerInstance.transitionTo('/' + nextRouteName);
         }

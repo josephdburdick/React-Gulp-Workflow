@@ -33,5 +33,5 @@ let routes = (
 );
 
 Router.run(routes, Router.HistoryLocation, function (Handler) {
-  React.render(<Handler/>, document.querySelector('#yield'));
+  React.render(<Handler/>, document.querySelector('#app'));
 });

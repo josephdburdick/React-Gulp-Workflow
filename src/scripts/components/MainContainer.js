@@ -8,7 +8,7 @@ PrimaryNavigation = require('./PrimaryNavigation.js');
 let MainContainer = React.createClass({
   mixins:[Router.State],
   // <RouteHandler/> specifies the destination in the DOM where "pages" content is rendered
-  render: function () {
+  componentDidMount(){
     let routerInstance = this.context.router,
         availableRouteNames = _.allKeys(this.context.router.namedRoutes),
         availableRoutesWithValue = [],
@@ -40,7 +40,6 @@ let MainContainer = React.createClass({
         nextRouteName = nextRouteObject[0].name;
       }
     }
-
     $(function($) {
       let $appContainer = $('#app');
       // window.scrollTo(0, 0);
@@ -52,12 +51,14 @@ let MainContainer = React.createClass({
             scrollPercent = 1 * $(containeR).scrollTop() / ($(containeD).height() - $(containeR).height());
 
             console.log(scrollPercent);
-        if(thisScrollTop + thisInnerHeight + 1 >= $appContainer.outerHeight()) {
+        if($appContainer.height() && thisScrollTop + thisInnerHeight + 1 >= $appContainer.outerHeight()) {
           // console.log("Reached end of page.");
           routerInstance.transitionTo('/' + nextRouteName);
         }
       };
     });
+  },
+  render() {
 return (
   <div>
     <div className="main">

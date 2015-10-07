@@ -3,9 +3,8 @@ _ = require('underscore'),
 React = require('react'),
 Router = require('react-router'),
 RouteHandler = Router.RouteHandler,
-PrimaryNavigation = require('./PrimaryNavigation.js');
 
-let MainContainer = React.createClass({
+MainContainer = React.createClass({
   mixins:[Router.State],
   // <RouteHandler/> specifies the destination in the DOM where "pages" content is rendered
   render: function () {

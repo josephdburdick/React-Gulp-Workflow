@@ -5,15 +5,20 @@ let
   Fill = require('../helpers/Fill.js'),
   Dock = require('../components/Dock.js'),
   Overflow = require('../components/Overflow.js'),
+  PrimaryNavigation = require('../components/PrimaryNavigation.js'),
+
   Home = React.createClass({
     render(){
       return (
-        <div>
+        <div id="home" className="fill-viewport">
+          <div className="primary-navigation--container">
+            <PrimaryNavigation name="navbar"/>
+          </div>
           <Jumbotron>
             <h1>Adoptive is strategy-led experience design</h1>
             <a href="#/about" className="btn-white btn-outline btn-lg">Learn more</a>
           </Jumbotron>
-          <section id="work">
+          <section>
             <div className="container">
               <div className="section-title text-center">
                 <h2><span className="text-rule text-rule--above">Work</span></h2>
@@ -41,7 +46,7 @@ let
               </div>
             </div>
           </section>
-          <section id="services">
+          <section>
             <div className="container">
               <div className="section-title text-center">
                 <h2><span className="text-rule text-rule--above">Services</span></h2>
@@ -59,7 +64,7 @@ let
               </div>
             </div>
           </section>
-          <section id="about">
+          <section>
             <div className="container">
               <div className="section-title text-center">
                 <h2><span className="text-rule text-rule--above">About Us</span></h2>

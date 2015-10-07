@@ -2,15 +2,15 @@ let
   React = require('react'),
   Card = require('../components/Card.js'),
   Jumbotron = require('../components/Jumbotron.js'),
-  Home = React.createClass({
+  About = React.createClass({
     render(){
       return (
-        <div>
+        <div id="about" className="fill-viewport">
           <Jumbotron>
             <h1>This is the About page</h1>
             <a href="#/about" className="btn-white btn-outline btn-lg">Learn more</a>
           </Jumbotron>
-          <section id="work">
+          <section>
             <div className="container">
               <div className="section-title text-center">
                 <h2><span className="text-rule text-rule--above">Work</span></h2>
@@ -42,4 +42,4 @@ let
       );
     }
   });
-  module.exports = Home;
+  module.exports = About;

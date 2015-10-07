@@ -24,6 +24,7 @@ html, body{
 @import 'helpers/fills';
 
 /** COMPONENTS **/
+@import 'components/jumbotron';
 @import 'components/navigation';
 @import 'components/images';
 @import 'components/carousels';
@@ -31,7 +32,6 @@ html, body{
 @import 'components/figures';
 @import 'components/text-rule';
 @import 'components/buttons';
-@import 'components/jumbotron';
 
 /** VIEWS **/
 @import 'views/about';
@@ -46,8 +46,18 @@ section{
   float: none;
   margin: 0 auto;
 }
+.width-100{
+  width: 100%;
+}
 /** VIEWS **/
-
+.fill-viewport{
+  position: relative;
+  padding-top: 50px;
+  min-height: 100vh;
+  &:first-child{
+    padding-top: 0;
+  }
+}
 .next-page{
   margin-top: 4vw;
   margin-bottom: -10vw;

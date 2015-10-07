@@ -9,7 +9,6 @@ let
       return {
         target: 'Block',
         classes: 'carousel carousel-overflow'
-        // position: 'bottom'
       };
     },
     getInitialState(){
@@ -41,13 +40,11 @@ let
       $(window).on('resize', () => {
         newWidth = getChildrenWidth();
         console.log(newWidth);
-        // if (newWidth !== initialWidth){
-        //   $(carouselInner).width(newWidth);
-        // }
       }).trigger('resize');
     },
     render(){
       return (
+
         <div className={this.props.classes} style={this.state.styles}>
           {this.props.children}
         </div>

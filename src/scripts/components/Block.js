@@ -8,7 +8,7 @@ let
     getDefaultProps(){
       return {
         ratio: 0.55,
-        classes: 'card card-base vertical-center'
+        classes: 'card card-base vertical-center width-100'
       };
     },
     getInitialState(){

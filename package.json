@@ -37,6 +37,7 @@
     "main-bower-files": "^2.5.0",
     "opn": "^1.0.1",
     "react": "^0.13.3",
+    "react-lazyload": "^0.2.3",
     "react-router": "^0.13.3",
     "reactify": "^1.1.1",
     "uglify": "^0.1.5",

@@ -43,10 +43,10 @@ let
 
               <div id="nav-primary--navbar-collapse" className="navbar-collapse collapse navbar-stroke--bottom">
                 <ul className="nav navbar-nav">
-                  <li><Link to="work">Work</Link></li>
-                  <li><Link to="services">Services</Link></li>
-                  <li><Link to="about">About Us</Link></li>
-                  <li><Link to="thoughts">Thoughts</Link></li>
+                  <li><a href="#work">Work</a></li>
+                <li><a href="#services">Services</a></li>
+              <li><a href="#about">About Us</a></li>
+            <li><a href="#thoughts">Thoughts</a></li>
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
                   <li><a href="#" className="btn btn-default">Get in Touch</a></li>

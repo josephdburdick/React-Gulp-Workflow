@@ -7,7 +7,6 @@ let
       return (
         <header>
           <div className="jumbotron">
-            <PrimaryNavigation name="navbar"/>
             <div className="container">
               <div className="row">
                 <div className="intro-text col-sm-6 text-left">

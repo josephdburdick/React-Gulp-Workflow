@@ -6,12 +6,12 @@ let
   Thoughts = React.createClass({
     render(){
       return (
-        <div>
+        <div id="thoughts" className="fill-viewport">
           <Jumbotron>
             <h1>This is the Thoughts page</h1>
             <a href="#/about" className="btn-white btn-outline btn-lg">Learn more</a>
           </Jumbotron>
-          <section id="work">
+          <section>
             <div className="container">
               <div className="section-title text-center">
                 <h2><span className="text-rule text-rule--above">Thoughts</span></h2>

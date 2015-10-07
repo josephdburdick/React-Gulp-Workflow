@@ -47,7 +47,7 @@ let MainContainer = React.createClass({
         let thisScrollTop = Math.round($(this).scrollTop()),
             thisInnerHeight = Math.round($(this).innerHeight()),
             containeR = window,
-            containeD = document, //$('#footer-main'),
+            containeD = document, 
             scrollPercent = 1 * $(containeR).scrollTop() / ($(containeD).height() - $(containeR).height());
 
             console.log(scrollPercent);

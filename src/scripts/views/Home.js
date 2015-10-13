@@ -66,7 +66,7 @@ let
               </div>
             </div>
 
-            <Overflow className="carousel carousel-overflow">
+            <Overflow className="carousel carousel-overflow" horizontalOffset={-40}>
               <div className="carousel-inner">
                 <div className="carousel-item">
                   <Block ratio="1">

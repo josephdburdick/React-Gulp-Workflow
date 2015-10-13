@@ -8,8 +8,8 @@ let
     getDefaultProps(){
       return {
         target: 'Block',
-        classes: 'carousel carousel-overflow'
-        // position: 'bottom'
+        classes: 'carousel carousel-overflow',
+        horizontalOffset: 0
       };
     },
     getInitialState(){
@@ -17,7 +17,8 @@ let
         classes: classNames(this.props.className, this.props.classes),
         styles: {
           width: this.props.width || 'auto'
-        }
+        },
+        horizontalOffset: this.props.horizontalOffset
       };
     },
     componentDidMount(){
@@ -25,7 +26,8 @@ let
           $carouselInner = $carousel.find('.carousel-inner'),
           $children = $carouselInner.find('.carousel-item'),
           initialWidth = 0,
-          newWidth = 0;
+          newWidth = 0,
+          horizontalOffset = this.props.horizontalOffset;
 
       $carousel.before('<div class="carousel-overflow--outline"></div>');
       let $carouselOutline = $carousel.siblings('.carousel-overflow--outline');
@@ -33,16 +35,16 @@ let
       let getChildrenWidth = () => {
         newWidth = 0;
         // handle padding on desktop
-        let newPadding = ($(window).width() - $carouselOutline.outerWidth(true) / 2);
+        let newPadding = $(window).width() - $carouselOutline.outerWidth(true);
         $carouselInner.css({
-          paddingLeft: newPadding,
-          paddingRight: newPadding
+          paddingLeft: (newPadding / 2) + horizontalOffset,
+          paddingRight: (newPadding / 2) + horizontalOffset
         });
         $children.each((i, child) => {
           newWidth += $(child).outerWidth(true);
         });
-        newWidth += parseInt($carouselInner.css('paddingLeft'));
-        newWidth += parseInt($carouselInner.css('paddingRight'));
+        // newWidth += parseInt($carouselInner.css('paddingLeft'));
+        // newWidth += parseInt($carouselInner.css('paddingRight'));
         return newWidth;
       };
       initialWidth = getChildrenWidth($children);

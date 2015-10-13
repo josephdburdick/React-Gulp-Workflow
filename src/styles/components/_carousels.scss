@@ -2,11 +2,12 @@
  *
  * Carousels
  */
+$carousel-overflow--max-width: 1170px;
 .carousel-overflow--outline{
   content: '';
   position: absolute;
-
-  width: 1170px;
+  width: 95%;
+  max-width: $carousel-overflow--max-width;
   height: 100%;
   margin: 0 auto;
   padding: 40px 0;
@@ -26,7 +27,19 @@
     overflow-x: auto;
   }
   .card{
-    min-width: 360px;
+    @media(min-width: $screen-md){
+      min-width: 350px;
+      // max-width: 405px;
+    }
+    @media(max-width: $screen-md){
+      min-width: 30vw;
+    }
+    @media(max-width: $screen-sm){
+      min-width: 50vw;
+    }
+    @media(max-width: $screen-xs){
+      min-width: 80vw;
+    }
   }
 }
 .carousel{

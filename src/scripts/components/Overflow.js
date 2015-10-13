@@ -43,8 +43,7 @@ let
         $children.each((i, child) => {
           newWidth += $(child).outerWidth(true);
         });
-        // newWidth += parseInt($carouselInner.css('paddingLeft'));
-        // newWidth += parseInt($carouselInner.css('paddingRight'));
+
         return newWidth;
       };
       initialWidth = getChildrenWidth($children);
@@ -57,12 +56,11 @@ let
         if ($carouselOutline.css('padding-top') || $carouselOutline.css('padding')){
           let padding = $carouselOutline.css('padding-top');
           $carousel.css({ marginTop: padding, marginBottom: padding });
-          // $carouselOutline.height = $carouselInner.outerHeight(true) + (parseInt(padding) * 2);
           $carouselOutline.css('height', $carouselInner.outerHeight(true) + (parseInt(padding) * 2));
         } else {
-          // $carouselOutline.height = $carouselInner.outerHeight(true);
           $carouselOutline.css('height', $carouselInner.outerHeight(true));
         }
+        $carouselInner.width(newWidth);
       }).trigger('resize');
     },
     render(){

@@ -51,7 +51,7 @@ let
                   <Block ratio="0.45" backgroundImage="https://c2.staticflickr.com/8/7390/16385635445_9e942c1121_k.jpg" backgroundSize="cover">
                     <Fill tintColor="white">
                       <div className="dock position-absolute--bottom full-width text-center">
-                        <div className="action-link"><a href="#/services" className="btn btn-lg btn-transparent">See what we do <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                        <div className="action-link"><a href="#/services" className="btn btn-lg btn-transparent">Learn about what we do <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </div>
                     </Fill>
                   </Block>

@@ -29,11 +29,12 @@ let
     },
     componentDidMount(){
       let element = React.findDOMNode(this),
-          ratio = this.props.ratio;
+          ratio = this.props.ratio,
+          minWidth = this.props.minWidth;
 
       $(window).on('resize', () => {
         $(element).each(function(){
-          $(this).css({minHeight: Math.round($(this).outerWidth() * ratio )});
+          $(this).css({minWidth: minWidth, minHeight: Math.round($(this).outerWidth() * ratio )});
         });
       }).trigger('resize');
     },

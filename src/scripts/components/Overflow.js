@@ -21,29 +21,46 @@ let
       };
     },
     componentDidMount(){
-      let carousel = $(this.getDOMNode()),
-          carouselInner = carousel.find('.carousel-inner'),
-          children = carouselInner.find('.carousel-item'),
+      let $carousel = $(this.getDOMNode()),
+          $carouselInner = $carousel.find('.carousel-inner'),
+          $children = $carouselInner.find('.carousel-item'),
           initialWidth = 0,
           newWidth = 0;
 
+      $carousel.before('<div class="carousel-overflow--outline"></div>');
+      let $carouselOutline = $carousel.siblings('.carousel-overflow--outline');
+
       let getChildrenWidth = () => {
         newWidth = 0;
-        children.each((i, child) => {
+        // handle padding on desktop
+        let newPadding = ($(window).width() - $carouselOutline.outerWidth(true) / 2);
+        $carouselInner.css({
+          paddingLeft: newPadding,
+          paddingRight: newPadding
+        });
+        $children.each((i, child) => {
           newWidth += $(child).outerWidth(true);
         });
+        newWidth += parseInt($carouselInner.css('paddingLeft'));
+        newWidth += parseInt($carouselInner.css('paddingRight'));
         return newWidth;
       };
-      initialWidth = getChildrenWidth(children);
-      $(carouselInner).width(initialWidth);
+      initialWidth = getChildrenWidth($children);
+      $carouselInner.width(initialWidth);
 
 
       $(window).on('resize', () => {
         newWidth = getChildrenWidth();
-        console.log(newWidth);
-        // if (newWidth !== initialWidth){
-        //   $(carouselInner).width(newWidth);
-        // }
+
+        if ($carouselOutline.css('padding-top') || $carouselOutline.css('padding')){
+          let padding = $carouselOutline.css('padding-top');
+          $carousel.css({ marginTop: padding, marginBottom: padding });
+          // $carouselOutline.height = $carouselInner.outerHeight(true) + (parseInt(padding) * 2);
+          $carouselOutline.css('height', $carouselInner.outerHeight(true) + (parseInt(padding) * 2));
+        } else {
+          // $carouselOutline.height = $carouselInner.outerHeight(true);
+          $carouselOutline.css('height', $carouselInner.outerHeight(true));
+        }
       }).trigger('resize');
     },
     render(){

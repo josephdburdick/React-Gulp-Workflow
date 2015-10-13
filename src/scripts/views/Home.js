@@ -66,7 +66,7 @@ let
               </div>
             </div>
 
-            <Overflow className="carousel carousel-overflow" target=".col-xs-4">
+            <Overflow className="carousel carousel-overflow">
               <div className="carousel-inner">
                 <div className="carousel-item">
                   <Block ratio="1">

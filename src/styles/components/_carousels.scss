@@ -2,30 +2,31 @@
  *
  * Carousels
  */
+.carousel-overflow--outline{
+  content: '';
+  position: absolute;
 
+  width: 1170px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 40px 0;
+  border: 1px solid #ddd;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .carousel-overflow{
   position: relative;
   width: 100%;
   overflow: hidden;
   overflow-x: auto;
-  &:before{
-    content: '';
-    position: fixed;
-
-    width: 1170px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 40px 0;
-    border: 1px solid #ddd;
-    left: 50%;
-    transform: translateX(-50%);
-    background: red;
-  }
   .carousel-inner{
     // display: flex;
     position: relative;
     overflow: hidden;
     overflow-x: auto;
+  }
+  .card{
+    min-width: 360px;
   }
 }
 .carousel{

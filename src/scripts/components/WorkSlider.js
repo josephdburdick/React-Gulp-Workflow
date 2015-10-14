@@ -1,12 +1,19 @@
 let
   React = require('react'),
-  ReactSwipe = require('react-swipe'),
+  Slider = require('react-slick'),
   WorkSlider = React.createClass({
     render(){
+      let settings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 2,
+        slidesToScroll: 1
+      };
       return (
-        <ReactSwipe continuous={false}>
+        <Slider {...settings}>
           {this.props.children}
-        </ReactSwipe>
+        </Slider>
       );
     }
   });

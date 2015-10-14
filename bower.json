@@ -4,7 +4,8 @@
   "dependencies": {
     "bootstrap-sass": "~3.3.5",
     "modernizr": "~2.8.1",
-    "font-awesome": "~4.4.0"
+    "font-awesome": "~4.4.0",
+    "slick-carousel": "~1.5.8"
   },
   "overrides": {
     "bootstrap-sass": {

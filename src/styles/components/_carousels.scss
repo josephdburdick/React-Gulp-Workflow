@@ -60,3 +60,16 @@ $carousel-overflow--max-width: 1170px;
     margin: 0 5px 10px;
   }
 }
+
+/*
+ *
+ * SLICK CAROUSEL
+ */
+#slider-arrows--container{
+  position: relative;
+}
+.slick-prev, .slick-next{
+  &:before{
+    font-size: 70px;
+  }
+}

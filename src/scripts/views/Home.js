@@ -19,8 +19,9 @@ let
               <div className="section-title text-center">
                 <h2><span className="text-rule text-rule--above">Work</span></h2>
               </div>
-              <div className="row">
-                <WorkSlider>
+            </div>
+            <div className="row">
+              <WorkSlider>
                 <div className="col-sm-6">
                   <Block ratio="0.55">
                     <div className="card-body">
@@ -79,9 +80,9 @@ let
                   </Block>
                 </div>
 
-                </WorkSlider>
-              </div>
+              </WorkSlider>
             </div>
+
           </section>
           <section id="services">
             <div className="container">

@@ -68,6 +68,16 @@ $carousel-overflow--max-width: 1170px;
 #slider-arrows--container{
   position: relative;
 }
+.slick{
+  // .card{
+  //   margin-left: 5px;
+  //   margin-right: 5px;
+  // }
+}
+.slick-slide{
+  outline: 0;
+  box-shadow: none;
+}
 .slick-prev, .slick-next{
   &:before{
     font-size: 70px;

@@ -20,10 +20,11 @@ let
                 <h2><span className="text-rule text-rule--above">Work</span></h2>
               </div>
             </div>
-            <div className="row">
-              <WorkSlider>
-                <div className="col-sm-6">
-                  <Block ratio="0.55">
+            <div className="container">
+              <div className="row">
+                <WorkSlider>
+                  <div className="col-sm-6">
+                    <Block ratio="0.55">
                     <div className="card-body">
                       <div className="project-brand">Yale Medicine</div>
                       <div className="project-title">
@@ -32,46 +33,10 @@ let
                     </div>
                   </Block>
                 </div>
-                <div className="col-sm-6">
-                  <Block ratio="0.55">
-                    <div className="card-body">
-                      <div className="project-brand">Bundoo</div>
-                      <div className="project-title">Building and Online Community Among New Parents</div>
-                      <div className="action-link"><a href="#/work" className="btn btn-lg btn-transparent padding-left--0">See the case study <i className="glyphicon fa fa-chevron-right"></i></a></div>
-                    </div>
-                  </Block>
-                </div>
-                <div className="col-sm-6">
-                  <Block ratio="0.55">
-                    <div className="card-body">
-                      <div className="project-brand">Yale Medicine</div>
-                      <div className="project-title">
-                        Redesigning Yale Medicine's Digital Experience</div>
-                      <div className="action-link"><a href="#/work" className="btn btn-lg btn-transparent padding-left--0">See the case study <i className="glyphicon fa fa-chevron-right"></i></a></div>
-                    </div>
-                  </Block>
-                </div>
-                <div className="col-sm-6">
-                  <Block ratio="0.55">
-                    <div className="card-body">
-                      <div className="project-brand">Bundoo</div>
-                      <div className="project-title">Building and Online Community Among New Parents</div>
-                      <div className="action-link"><a href="#/work" className="btn btn-lg btn-transparent padding-left--0">See the case study <i className="glyphicon fa fa-chevron-right"></i></a></div>
-                    </div>
-                  </Block>
-                </div>
-                <div className="col-sm-6">
-                  <Block ratio="0.55">
-                    <div className="card-body">
-                      <div className="project-brand">Yale Medicine</div>
-                      <div className="project-title">
-                        Redesigning Yale Medicine's Digital Experience</div>
-                      <div className="action-link"><a href="#/work" className="btn btn-lg btn-transparent padding-left--0">See the case study <i className="glyphicon fa fa-chevron-right"></i></a></div>
-                    </div>
-                  </Block>
-                </div>
-                <div className="col-sm-6">
-                  <Block ratio="0.55">
+
+
+                  <div className="col-sm-6">
+                    <Block ratio="0.55">
                     <div className="card-body">
                       <div className="project-brand">Bundoo</div>
                       <div className="project-title">Building and Online Community Among New Parents</div>
@@ -80,8 +45,55 @@ let
                   </Block>
                 </div>
 
-              </WorkSlider>
+
+                  <div className="col-sm-6">
+                    <Block ratio="0.55">
+                    <div className="card-body">
+                      <div className="project-brand">Yale Medicine</div>
+                      <div className="project-title">
+                        Redesigning Yale Medicine's Digital Experience</div>
+                      <div className="action-link"><a href="#/work" className="btn btn-lg btn-transparent padding-left--0">See the case study <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                    </div>
+                  </Block>
+                </div>
+
+
+                  <div className="col-sm-6">
+                    <Block ratio="0.55">
+                    <div className="card-body">
+                      <div className="project-brand">Bundoo</div>
+                      <div className="project-title">Building and Online Community Among New Parents</div>
+                      <div className="action-link"><a href="#/work" className="btn btn-lg btn-transparent padding-left--0">See the case study <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                    </div>
+                  </Block>
+                </div>
+
+
+                  <div className="col-sm-6">
+                    <Block ratio="0.55">
+                    <div className="card-body">
+                      <div className="project-brand">Yale Medicine</div>
+                      <div className="project-title">
+                        Redesigning Yale Medicine's Digital Experience</div>
+                      <div className="action-link"><a href="#/work" className="btn btn-lg btn-transparent padding-left--0">See the case study <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                    </div>
+                  </Block>
+                </div>
+
+
+                  <div className="col-sm-6">
+                    <Block ratio="0.55">
+                    <div className="card-body">
+                      <div className="project-brand">Bundoo</div>
+                      <div className="project-title">Building and Online Community Among New Parents</div>
+                      <div className="action-link"><a href="#/work" className="btn btn-lg btn-transparent padding-left--0">See the case study <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                    </div>
+                  </Block>
+                </div>
+
+                </WorkSlider>
             </div>
+          </div>
 
           </section>
           <section id="services">

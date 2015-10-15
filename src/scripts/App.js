@@ -32,6 +32,6 @@ let routes = (
   </Route>
 );
 
-Router.run(routes, Router.HistoryLocation, function (Handler) {
+Router.run(routes, Router.HashLocation, function (Handler) {
   React.render(<Handler/>, document.querySelector('#app'));
 });

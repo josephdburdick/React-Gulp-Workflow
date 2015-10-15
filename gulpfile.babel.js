@@ -190,7 +190,12 @@ gulp.task('fonts', ['copy-fa-fonts'], () => {
     .pipe(gulp.dest(`${path.DEST}/fonts`));
 });
 
-gulp.task('extras', () => {
+gulp.task('copy-slick-carousel-loader', () => {
+  return gulp.src('bower_components/slick-carousel/slick/*.gif')
+    .pipe(gulp.dest(`${path.DEST}/styles/`));
+});
+
+gulp.task('extras', ['copy-slick-carousel-loader'], () => {
   return gulp.src([
     `${path.SRC}/*.*`,
     `!${path.SRC}/*.html`

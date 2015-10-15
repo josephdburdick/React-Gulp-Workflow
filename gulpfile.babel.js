@@ -273,7 +273,7 @@ gulp.task('deploy', () => {
     .pipe($.ghPages('git@github.com:josephdburdick/adoptive-2015'));
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'extras', 'minifyJS'], () => {
+gulp.task('build', ['html', 'scripts', 'images', 'fonts', 'extras', 'minifyJS'], () => {
   return gulp.src(`${path.DEST}/**/*`).pipe($.size({title: 'build', gzip: true}));
 });
 

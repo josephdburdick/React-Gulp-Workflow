@@ -51,7 +51,6 @@ let MainContainer = React.createClass({
             containeD = document, //$('#footer-main'),
             scrollPercent = 1 * $(containeR).scrollTop() / ($(containeD).height() - $(containeR).height());
 
-            console.log(scrollPercent);
         if(thisScrollTop + thisInnerHeight + 1 >= $appContainer.outerHeight()) {
           // console.log("Reached end of page.");
           routerInstance.transitionTo('/' + nextRouteName);

@@ -51,14 +51,34 @@ let
       };
     },
     componentDidMount(){
-      let $this = $(this.getDOMNode());
+      let $slider = $(this.getDOMNode()).find('.slick');
       let settings = this.props.settings;
-      $this.slick(settings);
+      $slider.slick(settings);
+
+      $('[data-direction]').on('click', (e) => {
+        e.preventDefault();
+        let direction = $(e.currentTarget).data('direction');
+        $slider.slick(direction);
+      });
     },
     render(){
       return (
-        <div className='slick'>
-          {this.props.children}
+        <div className="slick-slider--wrapper">
+          <div className="row hidden-sm hidden-xs">
+            <div className="col-sm-12">
+              <div className="slick-slider--arrows-container text-right">
+                <a href="#" data-direction="slickPrev"><i className="fa fa-chevron-circle-left fa-4x"></i></a>
+                <a href="#" data-direction="slickNext"><i className="fa fa-chevron-circle-right fa-4x"></i></a>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm-12">
+              <div className="slick">
+                {this.props.children}
+              </div>
+            </div>
+          </div>
         </div>
       );
     }

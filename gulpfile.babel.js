@@ -132,7 +132,7 @@ gulp.task('scripts', () => {
 });
 
 // run 'scripts' task first, then watch for future changes
-gulp.task('watchScripts', ['scripts'], () =>{
+gulp.task('watchScripts', () =>{
   return buildScript(`App.js`, true);
 });
 
@@ -201,7 +201,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, [path.TMP, path.DEST]));
 
-gulp.task('serve', ['watchScripts', 'styles', 'fonts'], () => {
+gulp.task('serve', ['scripts', 'styles', 'fonts'], () => {
   browserSync({
     notify: false,
     port: 9000,

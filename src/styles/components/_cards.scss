@@ -5,9 +5,9 @@
 
 // Base class
 .project-title{
-  font-size: 2vw;
-  @media(max-width: $screen-sm){
-    font-size: 4vw;
+  font-size: 30px;
+  @media(max-width: $screen-md){
+    font-size: 22px;
   }
 }
 .card {

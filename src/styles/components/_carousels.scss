@@ -68,7 +68,11 @@ $carousel-overflow--max-width: 1170px;
 #slider-arrows--container{
   position: relative;
 }
+.slick-slider--wrapper{
+  margin-top: 10px;
+}
 .slick-slider--arrows-container{
+  margin-top: -40px;
   [data-direction]{
     color: $gray-light;
     padding: 5px 10px;

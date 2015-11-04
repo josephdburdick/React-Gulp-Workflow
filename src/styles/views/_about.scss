@@ -5,18 +5,18 @@
 
 #about{
   .card{
-    @media (max-width: $screen-xs){
-      width: 200px;
-      height: 210px;
-    }
-    @media (min-width: $screen-sm){
-      width: 245px;
-      height: 250px;
-    }
-    @media (min-width: $screen-md){
-      width: 405px;
-      height: 450px;
-    }
+    // @media (max-width: $screen-xs){
+    //   width: 200px;
+    //   height: 210px;
+    // }
+    // @media (min-width: $screen-sm){
+    //   width: 245px;
+    //   height: 250px;
+    // }
+    // @media (min-width: $screen-md){
+    //   width: 405px;
+    //   height: 450px;
+    // }
 
   }
 }

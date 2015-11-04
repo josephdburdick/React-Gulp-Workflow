@@ -7,7 +7,6 @@ nav{
 
 }
 .navbar-brand{
-  padding-top: 10px;
   padding-bottom: 10px;
 }
 @media (min-width: 768px){
@@ -27,6 +26,9 @@ nav{
 .navbar-stroke--bottom{
   transition: border-bottom .2s ease-in-out;
   border-bottom: 2px solid $gray-light;
+  @media(min-width: $screen-sm){
+    padding-top: 4px;
+  }
 }
 
 #nav-primary{

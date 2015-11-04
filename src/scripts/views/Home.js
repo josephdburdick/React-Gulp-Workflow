@@ -5,6 +5,7 @@ let
   Fill = require('../helpers/Fill.js'),
   Dock = require('../components/Dock.js'),
   Overflow = require('../components/Overflow.js'),
+  WorkSlider = require('../components/WorkSlider.js'),
   Home = React.createClass({
     render(){
       return (
@@ -18,9 +19,12 @@ let
               <div className="section-title text-center">
                 <h2><span className="text-rule text-rule--above">Work</span></h2>
               </div>
-              <div className="row row-flex row-flex-wrap case-studies">
-                <div className="col-sm-6">
-                  <Block>
+            </div>
+            <div className="container">
+              <div className="row">
+                <WorkSlider>
+                  <div className="col-sm-6">
+                    <Block ratio="0.55">
                     <div className="card-body">
                       <div className="project-brand">Yale Medicine</div>
                       <div className="project-title">
@@ -29,8 +33,10 @@ let
                     </div>
                   </Block>
                 </div>
+
+
                 <div className="col-sm-6">
-                  <Block>
+                  <Block ratio="0.55">
                     <div className="card-body">
                       <div className="project-brand">Bundoo</div>
                       <div className="project-title">Building and Online Community Among New Parents</div>
@@ -38,8 +44,57 @@ let
                     </div>
                   </Block>
                 </div>
-              </div>
+
+
+                <div className="col-sm-6">
+                  <Block ratio="0.55">
+                    <div className="card-body">
+                      <div className="project-brand">Yale Medicine</div>
+                      <div className="project-title">
+                        Redesigning Yale Medicine's Digital Experience</div>
+                      <div className="action-link"><a href="#/work" className="btn btn-lg btn-transparent padding-left--0">See the case study <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                    </div>
+                  </Block>
+                </div>
+
+
+                <div className="col-sm-6">
+                  <Block ratio="0.55">
+                    <div className="card-body">
+                      <div className="project-brand">Bundoo</div>
+                      <div className="project-title">Building and Online Community Among New Parents</div>
+                      <div className="action-link"><a href="#/work" className="btn btn-lg btn-transparent padding-left--0">See the case study <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                    </div>
+                  </Block>
+                </div>
+
+
+                <div className="col-sm-6">
+                  <Block ratio="0.55">
+                    <div className="card-body">
+                      <div className="project-brand">Yale Medicine</div>
+                      <div className="project-title">
+                        Redesigning Yale Medicine's Digital Experience</div>
+                      <div className="action-link"><a href="#/work" className="btn btn-lg btn-transparent padding-left--0">See the case study <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                    </div>
+                  </Block>
+                </div>
+
+
+                  <div className="col-sm-6">
+                    <Block ratio="0.55">
+                    <div className="card-body">
+                      <div className="project-brand">Bundoo</div>
+                      <div className="project-title">Building and Online Community Among New Parents</div>
+                      <div className="action-link"><a href="#/work" className="btn btn-lg btn-transparent padding-left--0">See the case study <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                    </div>
+                  </Block>
+                </div>
+
+                </WorkSlider>
             </div>
+          </div>
+
           </section>
           <section id="services">
             <div className="container">
@@ -51,7 +106,7 @@ let
                   <Block ratio="0.45" backgroundImage="https://c2.staticflickr.com/8/7390/16385635445_9e942c1121_k.jpg" backgroundSize="cover">
                     <Fill tintColor="white">
                       <div className="dock position-absolute--bottom full-width text-center">
-                        <div className="action-link"><a href="#/services" className="btn btn-lg btn-transparent">See what we do <i className="glyphicon fa fa-chevron-right"></i></a></div>
+                        <div className="action-link"><a href="#/services" className="btn btn-lg btn-transparent">Learn about what we do <i className="glyphicon fa fa-chevron-right"></i></a></div>
                       </div>
                     </Fill>
                   </Block>
@@ -66,7 +121,7 @@ let
               </div>
             </div>
 
-            <Overflow className="carousel carousel-overflow" target=".col-xs-4">
+            <Overflow className="carousel carousel-overflow" horizontalOffset={-40}>
               <div className="carousel-inner">
                 <div className="carousel-item">
                   <Block ratio="1">

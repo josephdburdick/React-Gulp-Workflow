@@ -132,7 +132,7 @@ gulp.task('scripts', () => {
 });
 
 // run 'scripts' task first, then watch for future changes
-gulp.task('watchScripts', ['scripts'], () =>{
+gulp.task('watchScripts', () =>{
   return buildScript(`App.js`, true);
 });
 
@@ -190,7 +190,12 @@ gulp.task('fonts', ['copy-fa-fonts'], () => {
     .pipe(gulp.dest(`${path.DEST}/fonts`));
 });
 
-gulp.task('extras', () => {
+gulp.task('copy-slick-carousel-loader', () => {
+  return gulp.src('bower_components/slick-carousel/slick/*.gif')
+    .pipe(gulp.dest(`${path.DEST}/styles/`));
+});
+
+gulp.task('extras', ['copy-slick-carousel-loader'], () => {
   return gulp.src([
     `${path.SRC}/*.*`,
     `!${path.SRC}/*.html`
@@ -201,7 +206,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, [path.TMP, path.DEST]));
 
-gulp.task('serve', ['watchScripts', 'styles', 'fonts'], () => {
+gulp.task('serve', ['scripts', 'styles', 'fonts'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -273,7 +278,7 @@ gulp.task('deploy', () => {
     .pipe($.ghPages('git@github.com:josephdburdick/adoptive-2015'));
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'extras', 'minifyJS'], () => {
+gulp.task('build', ['html', 'scripts', 'images', 'fonts', 'extras', 'minifyJS'], () => {
   return gulp.src(`${path.DEST}/**/*`).pipe($.size({title: 'build', gzip: true}));
 });
 

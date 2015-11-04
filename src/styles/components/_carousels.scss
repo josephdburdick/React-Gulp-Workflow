@@ -2,30 +2,44 @@
  *
  * Carousels
  */
-
+$carousel-overflow--max-width: 1170px;
+.carousel-overflow--outline{
+  content: '';
+  position: absolute;
+  width: 95%;
+  max-width: $carousel-overflow--max-width;
+  height: 100%;
+  margin: 0 auto;
+  padding: 40px 0;
+  border: 1px solid #ddd;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .carousel-overflow{
   position: relative;
   width: 100%;
   overflow: hidden;
   overflow-x: auto;
-  &:before{
-    content: '';
-    position: fixed;
-
-    width: 1170px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 40px 0;
-    border: 1px solid #ddd;
-    left: 50%;
-    transform: translateX(-50%);
-    background: red;
-  }
   .carousel-inner{
     // display: flex;
     position: relative;
     overflow: hidden;
     overflow-x: auto;
+  }
+  .card{
+    @media(min-width: $screen-md){
+      min-width: 350px;
+      // max-width: 405px;
+    }
+    @media(max-width: $screen-md){
+      min-width: 30vw;
+    }
+    @media(max-width: $screen-sm){
+      min-width: 50vw;
+    }
+    @media(max-width: $screen-xs){
+      min-width: 80vw;
+    }
   }
 }
 .carousel{
@@ -44,5 +58,42 @@
     position: relative;
     // max-width: 405px;
     margin: 0 5px 10px;
+  }
+}
+
+/*
+ *
+ * SLICK CAROUSEL
+ */
+#slider-arrows--container{
+  position: relative;
+}
+.slick-slider--wrapper{
+  margin-top: 10px;
+}
+.slick-slider--arrows-container{
+  margin-top: -40px;
+  [data-direction]{
+    color: $gray-light;
+    padding: 5px 10px;
+    margin-top: -70px;
+    display: inline-block;
+    border-left: 1px solid $gray-lighter;
+
+    &.disabled{
+      color: $gray-light;
+    }
+    &:first-child{
+      border-left: 0;
+    }
+  }
+}
+.slick-slide{
+  outline: 0;
+  box-shadow: none;
+}
+.slick-prev, .slick-next{
+  &:before{
+    font-size: 70px;
   }
 }

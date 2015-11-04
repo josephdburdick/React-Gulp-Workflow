@@ -38,7 +38,7 @@ let
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                <a className="navbar-brand page-scroll" href="#/">Adoptive {this.props.route}</a>
+                <Link to="home" className="navbar-brand page-scroll">Adoptive</Link>
               </div>
 
               <div id="nav-primary--navbar-collapse" className="navbar-collapse collapse navbar-stroke--bottom">

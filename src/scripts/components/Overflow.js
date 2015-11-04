@@ -8,8 +8,8 @@ let
     getDefaultProps(){
       return {
         target: 'Block',
-        classes: 'carousel carousel-overflow'
-        // position: 'bottom'
+        classes: 'carousel carousel-overflow',
+        horizontalOffset: 0
       };
     },
     getInitialState(){
@@ -17,33 +17,50 @@ let
         classes: classNames(this.props.className, this.props.classes),
         styles: {
           width: this.props.width || 'auto'
-        }
+        },
+        horizontalOffset: this.props.horizontalOffset
       };
     },
     componentDidMount(){
-      let carousel = $(this.getDOMNode()),
-          carouselInner = carousel.find('.carousel-inner'),
-          children = carouselInner.find('.carousel-item'),
+      let $carousel = $(this.getDOMNode()),
+          $carouselInner = $carousel.find('.carousel-inner'),
+          $children = $carouselInner.find('.carousel-item'),
           initialWidth = 0,
-          newWidth = 0;
+          newWidth = 0,
+          horizontalOffset = this.props.horizontalOffset;
+
+      $carousel.before('<div class="carousel-overflow--outline"></div>');
+      let $carouselOutline = $carousel.siblings('.carousel-overflow--outline');
 
       let getChildrenWidth = () => {
         newWidth = 0;
-        children.each((i, child) => {
+        // handle padding on desktop
+        let newPadding = $(window).width() - $carouselOutline.outerWidth(true);
+        $carouselInner.css({
+          paddingLeft: (newPadding / 2) + horizontalOffset,
+          paddingRight: (newPadding / 2) + horizontalOffset
+        });
+        $children.each((i, child) => {
           newWidth += $(child).outerWidth(true);
         });
+
         return newWidth;
       };
-      initialWidth = getChildrenWidth(children);
-      $(carouselInner).width(initialWidth);
+      initialWidth = getChildrenWidth($children);
+      $carouselInner.width(initialWidth);
 
 
       $(window).on('resize', () => {
         newWidth = getChildrenWidth();
-        console.log(newWidth);
-        // if (newWidth !== initialWidth){
-        //   $(carouselInner).width(newWidth);
-        // }
+
+        if ($carouselOutline.css('padding-top') || $carouselOutline.css('padding')){
+          let padding = $carouselOutline.css('padding-top');
+          $carousel.css({ marginTop: padding, marginBottom: padding });
+          $carouselOutline.css('height', $carouselInner.outerHeight(true) + (parseInt(padding) * 2));
+        } else {
+          $carouselOutline.css('height', $carouselInner.outerHeight(true));
+        }
+        $carouselInner.width(newWidth);
       }).trigger('resize');
     },
     render(){

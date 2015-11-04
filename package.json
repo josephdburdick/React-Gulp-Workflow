@@ -39,6 +39,8 @@
     "react": "^0.13.3",
     "react-router": "^0.13.3",
     "reactify": "^1.1.1",
+    "slick-carousel": "^1.5.8",
+    "swipe-js-iso": "^2.0.1",
     "uglify": "^0.1.5",
     "underscore": "^1.8.3",
     "vinyl-buffer": "^1.0.0",

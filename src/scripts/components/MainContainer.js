@@ -47,11 +47,10 @@ let MainContainer = React.createClass({
         let thisScrollTop = Math.round($(this).scrollTop()),
             thisInnerHeight = Math.round($(this).innerHeight()),
             containeR = window,
-            containeD = document, 
+            containeD = document,
             scrollPercent = 1 * $(containeR).scrollTop() / ($(containeD).height() - $(containeR).height());
 
-            console.log(scrollPercent);
-        if($appContainer.height() && thisScrollTop + thisInnerHeight + 1 >= $appContainer.outerHeight()) {
+        if(thisScrollTop + thisInnerHeight + 1 >= $appContainer.outerHeight()) {
           // console.log("Reached end of page.");
           routerInstance.transitionTo('/' + nextRouteName);
         }
